@@ -9,6 +9,15 @@ public class Task {
         this.done = false;
     }
 
+    public Task isDone() {
+        this.done = true;
+        return this;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
     @Override
     public String toString() {
         return (done ? "[X] " : "[ ] ") + this.description;

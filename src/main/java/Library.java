@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Library {
-    private final ArrayList<Task> library;
+    private ArrayList<Task> library;
 
     public Library() {
         this.library = new ArrayList<Task>();
@@ -21,12 +21,33 @@ public class Library {
         return this.library;
     }
 
-    public Task getTask(int index){
+    private Task getTask(int index){
         return this.library.get(index);
     }
 
+    public Library markTask(int index){
+        if (index < 0 || index >= this.library.size()) {
+            System.out.println("\tHey...yee That doesn't exist!");
+            return this;
+        }
+        Task task = this.getTask(index).isDone();
+        this.library.set(index, task);
+        ArrayList<Task> copy = this.library;
+        System.out.println("\tNice Work! I have marked this task as done:");
+        System.out.println("\t" + (index + 1) + ". " + task);
+        return new Library(copy);
+    }
+
+    public boolean isEmpty() {
+        return this.library.isEmpty();
+    }
+
+    public int size() {
+        return this.library.size();
+    }
+
     public void PrintList() {
-        if (this.library.isEmpty()) {
+        if (this.isEmpty()) {
             System.out.println("\tlist is empty :(");
         } else {
             System.out.println("\tHere it is!");

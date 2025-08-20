@@ -1,9 +1,8 @@
 import java.util.Scanner;
 import java.util.List;
 public class Dyke {
-    static String[] library = new String[100];
-    static int queue = 0;
-    static boolean library_Empty = true;
+    static Library library = new Library();
+    static int accountIndex = 1;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String bar = "\t____________________________________________________________\n";
@@ -11,35 +10,29 @@ public class Dyke {
                 + bar);
 
         while (sc.hasNext()) {
-            String input = sc.nextLine();
-            if (input.equals("Bye!")) {
+            String[] input = sc.nextLine().split(" ");
+            if (input[0].equals("Bye!")) {
                 System.out.println(bar + "\t Bye. Hope to see you again soon!\n" + bar);
                 break;
             }
-            if (input.equals("list")) {
+            if (input[0].equals("list")) {
                 System.out.print(bar);
-                PrintList();
+                library.PrintList();
                 System.out.println(bar);
             }
+
+            else if (input[0].equals("mark") && input.length > 1) {
+                System.out.println(bar);
+                library = library.markTask(Integer.parseInt(input[1]) - accountIndex);
+                System.out.println(bar);
+            }
+
             else {
-                library[queue] = input;
-                queue++;
-                library_Empty = false;
-                System.out.println(bar + "\tadded: " + input +  "\n" + bar);
+                library = library.addTask(new Task(input[0]));
+                System.out.println(bar + "\tadded: " + input[0] +  "\n" + bar);
             }
         }
         sc.close();
     }
 
-    public static void PrintList() {
-        if (library_Empty) {
-            System.out.println("\tlist is empty :(");
-        }
-        else {
-            System.out.println("\tHere it is!");
-            for (int i =0; i < queue; i++) {
-                System.out.println("\t" + (i + 1) + ". " + library[i]);
-            }
-        }
-    }
 }
