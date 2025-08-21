@@ -47,7 +47,7 @@ public class Library {
 
         Task task = this.getTask(index);
         library.remove(index);
-        System.out.println("\tAs you wish, Begone Task!:");
+        System.out.println("\tAs you wish... Begone Task!:");
         System.out.println("\t\t" + task);
         System.out.println("\tNow you have " + this.size() + " tasks.");
 
@@ -63,9 +63,9 @@ public class Library {
 
     public void PrintList() {
         if (this.isEmpty()) {
-            System.out.println("\tlist is empty :(");
+            System.out.println("\n\tlist is empty :(");
         } else {
-            System.out.println("\tHere it is!");
+            System.out.println("\n\tHere it is!");
             for (int i = 0; i < this.size(); i++) {
                 System.out.println("\t" + (i + 1) + ". " + this.getTask(i));
             }
