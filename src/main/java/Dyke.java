@@ -7,7 +7,7 @@ public class Dyke {
         Scanner sc = new Scanner(System.in);
         String bar = "\n\t____________________________________________________________";
         System.out.println( "\n" + bar + "\n\t Hello! I'm DYKE\n\t What can I do for you?\n\n" +
-                "\t\t\t\t\t\tpsst! type 'help' for help, duh.\n"
+                "\t\t\t\t\t\t\t\tpsst! type 'help' for help, duh.\n"
                 + bar);
 
         boolean running = true;
