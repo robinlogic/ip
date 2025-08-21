@@ -3,108 +3,109 @@ import java.util.List;
 public class Dyke {
     static Library library = new Library();
     static int accountIndex = 1;
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String bar = "\t____________________________________________________________";
         System.out.println( bar + "\n\t Hello! I'm DYKE\n\t What can I do for you?\n\n" +
                 "\t\t\t\t\t\t\t\tpsst! type 'help' for help, duh.\n"
                 + bar);
 
-        while (sc.hasNext()) {
+        boolean running = true;
+        while (sc.hasNext() && running) {
             String[] input = sc.nextLine().split(" ", 2);
-            String command = input[0];
+            try {
+                CommandType command = CommandType.fromString(input[0]);
 
-            if (command.equals("Bye!")) {
-                System.out.println(bar + "\t Bye. Hope to see you again soon!\n" + bar);
-                break;
-            }
-            else if (command.equals("list")) {
-                System.out.print(bar);
-                library.PrintList();
-                System.out.println(bar);
-            }
+                switch (command) {
 
-            else if (command.equals("help")) {
-                System.out.println(bar);
-                helpLine();
-                System.out.println(bar);
-            }
+                    case BYE:
+                        System.out.println(bar + "\t Bye. Hope to see you again soon!\n" + bar);
+                        running = false;
+                        break;
+                    case LIST:
+                        System.out.print(bar);
+                        library.PrintList();
+                        System.out.println(bar);
+                        break;
+                    case HELP:
+                        System.out.println(bar);
+                        helpLine();
+                        System.out.println(bar);
+                        break;
+                    case MARK:
+                        System.out.println(bar);
+                        library.markTask(Integer.parseInt(input[1]) - accountIndex);
+                        System.out.println(bar);
+                        break;
+                    case DEADLINE:
+                        /*
+                        String[] parts = input[1].split("/by", 2);
+                        String desc = parts[0].trim();
+                        String by = (parts.length > 1) ? parts[1].trim() : "";*/
 
-            else if (command.equals("mark")) {
-                System.out.println(bar);
-                library.markTask(Integer.parseInt(input[1]) - accountIndex);
-                System.out.println(bar);
-            }
+                        System.out.println(bar);
+                        try {
+                            if (input.length < 2) {
+                                throw new DykeException("\t I think you forgot the description...");
+                            }
+                            handleDeadline(input[1]);
+                        } catch (DykeException e) {
+                            System.out.println("\t " + e.getMessage() + "\n");
+                        }
+                        System.out.println(bar);
+                        break;
 
-            else if (command.equals("deadline")) {
-                /*
-                String[] parts = input[1].split("/by", 2);
-                String desc = parts[0].trim();
-                String by = (parts.length > 1) ? parts[1].trim() : "";*/
+                    case TODO:
+                        System.out.println(bar);
+                        try {
+                            if (input.length < 2) {
+                                throw new DykeException("\t Phineas, I don't know what we gonna do today!");
+                            }
+                            handleTodo(input[1]);
+                        } catch (DykeException e) {
+                            System.out.println("\t " + e.getMessage() + "\n");
+                        }
 
-                System.out.println(bar);
-                try {
-                    if (input.length < 2) {
-                        throw new DykeException("\t I think you forgot the description...");
+                        System.out.println(bar);
+                        break;
+
+                    case EVENT:
+                        System.out.println(bar);
+                        try {
+                            if (input.length < 2) {
+                                throw new DykeException("\t What is this event about?");
+                            }
+                            handleEvent(input[1]);
+                        } catch (DykeException e) {
+                            System.out.println("\t " + e.getMessage() + "\n");
+                        }
+                        System.out.println(bar);
+                        break;
+
+                    case DELETE:
+                        System.out.println(bar);
+                        try {
+                            if (input.length < 2) {
+                                throw new DykeException("\t What do you wanna delete?");
+                            }
+                            handleDelete(input[1]);
+                        } catch (DykeException e) {
+                            System.out.println("\t " + e.getMessage() + "\n");
+                        }
+                        System.out.println(bar);
+                        break;
+                    case WHAT:
+                        System.out.println(bar + "\n\tWhat do you mean?\n " +
+                                "\t\tWhen you nod your head yes,\n" +
+                                "\t\t\tBut you wanna say no... \n" + bar);
                     }
-                    handleDeadline(input[1]);
                 } catch (DykeException e) {
-                    System.out.println("\t " + e.getMessage() + "\n");
+                    System.out.println(e.getMessage());
                 }
-                System.out.println(bar);
-
-            }
-
-            else if (command.equals("todo")) {
-                System.out.println(bar);
-                try {
-                    if (input.length < 2) {
-                        throw new DykeException("\t Phineas, I don't know what we gonna do today!");
-                    }
-                    handleTodo(input[1]);
-                } catch (DykeException e) {
-                    System.out.println("\t " + e.getMessage() + "\n");
-                }
-
-                System.out.println(bar);
-
-            }
-
-            else if (command.equals("event")) {
-                System.out.println(bar);
-                try {
-                    if (input.length < 2) {
-                        throw new DykeException("\t What is this event about?");
-                    }
-                    handleEvent(input[1]);
-                } catch (DykeException e) {
-                    System.out.println("\t " + e.getMessage() + "\n");
-                }
-                System.out.println(bar);
-
-            }
-
-            else if (command.equals("delete")) {
-                System.out.println(bar);
-                try {
-                    if (input.length < 2) {
-                        throw new DykeException("\t What do you wanna delete?");
-                    }
-                    handleDelete(input[1]);
-                } catch (DykeException e){
-                    System.out.println("\t " + e.getMessage() + "\n");
-                }
-                System.out.println(bar);
-            }
-
-            else {
-                System.out.println(bar + "\n\tWhat do you mean?\n " +
-                        "\t\tWhen you nod your head yes,\n" +
-                        "\t\t\tBut you wanna say no... \n" + bar);
-            }
         }
         sc.close();
     }
+
 
     public static void handleDeadline(String input) throws DykeException {
         if (input.isBlank()) {
