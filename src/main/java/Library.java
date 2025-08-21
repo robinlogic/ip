@@ -14,6 +14,11 @@ public class Library {
     public Library addTask(Task task) {
         ArrayList<Task> copy = this.library;
         copy.add(task);
+
+        System.out.println("\t Great! I'm keeping track :D:");
+        System.out.println("\t\t" + task.toString());
+        System.out.println("\t " + "There are " + copy.size() + " tasks in the library.");
+
         return new Library(copy);
     }
 
@@ -27,7 +32,7 @@ public class Library {
 
     public Library markTask(int index){
         if (index < 0 || index >= this.library.size()) {
-            System.out.println("\tHey...yee That doesn't exist!");
+            System.out.println("\tHey... That doesn't exist!");
             return this;
         }
         Task task = this.getTask(index).isDone();
