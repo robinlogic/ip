@@ -30,19 +30,23 @@ public class Dyke {
                 System.out.println(bar);
             }
 
-            else if (command.equals("mark") && input.length > 1) {
+            else if (command.equals("mark")) {
                 System.out.println(bar);
-                library = library.markTask(Integer.parseInt(input[1]) - accountIndex);
+                library.markTask(Integer.parseInt(input[1]) - accountIndex);
                 System.out.println(bar);
             }
 
-            else if (command.equals("deadline") && input.length > 1) {
+            else if (command.equals("deadline")) {
+                /*
                 String[] parts = input[1].split("/by", 2);
                 String desc = parts[0].trim();
-                String by = (parts.length > 1) ? parts[1].trim() : "";
+                String by = (parts.length > 1) ? parts[1].trim() : "";*/
 
                 System.out.println(bar);
                 try {
+                    if (input.length < 2) {
+                        throw new DykeException("\t I think you forgot the description...");
+                    }
                     handleDeadline(input[1]);
                 } catch (DykeException e) {
                     System.out.println("\t " + e.getMessage() + "\n");
@@ -51,9 +55,12 @@ public class Dyke {
 
             }
 
-            else if (command.equals("todo") && input.length > 1) {
+            else if (command.equals("todo")) {
                 System.out.println(bar);
                 try {
+                    if (input.length < 2) {
+                        throw new DykeException("\t Phineas, I don't know what we gonna do today!");
+                    }
                     handleTodo(input[1]);
                 } catch (DykeException e) {
                     System.out.println("\t " + e.getMessage() + "\n");
@@ -63,15 +70,31 @@ public class Dyke {
 
             }
 
-            else if (command.equals("event") && input.length > 1) {
+            else if (command.equals("event")) {
                 System.out.println(bar);
                 try {
+                    if (input.length < 2) {
+                        throw new DykeException("\t What is this event about?");
+                    }
                     handleEvent(input[1]);
                 } catch (DykeException e) {
                     System.out.println("\t " + e.getMessage() + "\n");
                 }
                 System.out.println(bar);
 
+            }
+
+            else if (command.equals("delete")) {
+                System.out.println(bar);
+                try {
+                    if (input.length < 2) {
+                        throw new DykeException("\t What do you wanna delete?");
+                    }
+                    handleDelete(input[1]);
+                } catch (DykeException e){
+                    System.out.println("\t " + e.getMessage() + "\n");
+                }
+                System.out.println(bar);
             }
 
             else {
@@ -88,11 +111,11 @@ public class Dyke {
             throw new DykeException("\t I think you forgot the description...");
         }
         String[] parts = input.split("/by", 2);
-        if (parts.length != 2) {
+        if (parts.length != 2 || parts[1].isBlank()) {
             throw new DykeException("When should this be done by?");
         }
         String description = parts[0].trim();
-        String by = (parts.length > 1) ? parts[1].trim() : "";
+        String by = parts[1].trim();
 
         Deadline deadline  =  new Deadline(description, by);
         library.addTask(deadline);
@@ -107,7 +130,7 @@ public class Dyke {
 
         if (fromSplit.length != 2) {
             throw new DykeException("\t You know, I kinda gotta know when it's gonna happen.\n " +
-                    "\t format: /from *day-time* /to *day-time*");
+                    "\t\t format: /from *day-time* /to *day-time*");
         }
         String[] toSplit = fromSplit[1].split("/to", 2);
         String from = toSplit[0].trim();
@@ -127,8 +150,15 @@ public class Dyke {
         library.addTask(todo);
     }
 
+    public static void handleDelete(String input) throws DykeException {
+        if (input.isBlank()) {
+            throw new DykeException("\t What do you wanna delete?");
+        }
+        library.deleteTask(Integer.parseInt(input) - accountIndex);
+    }
+
     public static void helpLine() {
-        String helpStatement = "\t Something here";
+        String helpStatement = "\t *list of commands under construction*";
         System.out.println(helpStatement);
     }
 

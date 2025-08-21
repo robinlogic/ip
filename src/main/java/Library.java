@@ -30,17 +30,27 @@ public class Library {
         return this.library.get(index);
     }
 
-    public Library markTask(int index){
+    public void markTask(int index){
         if (index < 0 || index >= this.library.size()) {
             System.out.println("\tHey... That doesn't exist!");
-            return this;
         }
         Task task = this.getTask(index).isDone();
         this.library.set(index, task);
-        ArrayList<Task> copy = this.library;
         System.out.println("\tNice Work! I have marked this task as done:");
         System.out.println("\t" + (index + 1) + ". " + task);
-        return new Library(copy);
+    }
+
+    public void deleteTask(int index){
+        if (index < 0 || index >= this.library.size()) {
+            System.out.println("\tHey... That doesn't exist!");
+        }
+
+        Task task = this.getTask(index);
+        library.remove(index);
+        System.out.println("\tAs you wish, Begone Task!:");
+        System.out.println("\t\t" + task);
+        System.out.println("\tNow you have " + this.size() + " tasks.");
+
     }
 
     public boolean isEmpty() {
@@ -56,7 +66,7 @@ public class Library {
             System.out.println("\tlist is empty :(");
         } else {
             System.out.println("\tHere it is!");
-            for (int i = 0; i < this.library.size(); i++) {
+            for (int i = 0; i < this.size(); i++) {
                 System.out.println("\t" + (i + 1) + ". " + this.getTask(i));
             }
         }
