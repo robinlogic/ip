@@ -42,21 +42,34 @@ public class Dyke {
                 String by = (parts.length > 1) ? parts[1].trim() : "";
 
                 System.out.println(bar);
-                handleDeadline(input[1]);
+                try {
+                    handleDeadline(input[1]);
+                } catch (DykeException e) {
+                    System.out.println("\t " + e.getMessage() + "\n");
+                }
                 System.out.println(bar);
 
             }
 
             else if (command.equals("todo") && input.length > 1) {
                 System.out.println(bar);
-                handleTodo(input[1]);
+                try {
+                    handleTodo(input[1]);
+                } catch (DykeException e) {
+                    System.out.println("\t " + e.getMessage() + "\n");
+                }
+
                 System.out.println(bar);
 
             }
 
             else if (command.equals("event") && input.length > 1) {
                 System.out.println(bar);
-                handleEvent(input[1]);
+                try {
+                    handleEvent(input[1]);
+                } catch (DykeException e) {
+                    System.out.println("\t " + e.getMessage() + "\n");
+                }
                 System.out.println(bar);
 
             }
@@ -70,8 +83,14 @@ public class Dyke {
         sc.close();
     }
 
-    public static void handleDeadline(String input) {
+    public static void handleDeadline(String input) throws DykeException {
+        if (input.isBlank()) {
+            throw new DykeException("\t I think you forgot the description...");
+        }
         String[] parts = input.split("/by", 2);
+        if (parts.length != 2) {
+            throw new DykeException("When should this be done by?");
+        }
         String description = parts[0].trim();
         String by = (parts.length > 1) ? parts[1].trim() : "";
 
@@ -79,19 +98,30 @@ public class Dyke {
         library.addTask(deadline);
     }
 
-    public static void handleEvent(String input) {
+    public static void handleEvent(String input) throws DykeException {
+        if (input.isBlank()) {
+            throw new DykeException("\t What is this event about?");
+        }
         String[] fromSplit = input.split("/from", 2);
         String description = fromSplit[0].trim();
 
+        if (fromSplit.length != 2) {
+            throw new DykeException("\t You know, I kinda gotta know when it's gonna happen.\n " +
+                    "\t format: /from *day-time* /to *day-time*");
+        }
         String[] toSplit = fromSplit[1].split("/to", 2);
         String from = toSplit[0].trim();
+
         String to = (toSplit.length > 1) ? toSplit[1].trim() : "";
 
         Event event = new Event(description, from, to);
         library.addTask(event);
     }
 
-    public static void handleTodo(String input) {
+    public static void handleTodo(String input) throws DykeException {
+        if (input.isBlank()) {
+            throw new DykeException("\t Phineas, I don't know what we gonna do today!");
+        }
         String description = input.trim();
         Todo todo = new Todo(description);
         library.addTask(todo);
