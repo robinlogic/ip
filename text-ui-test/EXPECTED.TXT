@@ -1,43 +1,47 @@
 
-
 	____________________________________________________________
 	 Hello! I'm DYKE
 	 What can I do for you?
 
 								psst! type 'help' for help, duh.
-
 	____________________________________________________________
+	____________________________________________________________
+	 COMMANDS I /actually/ understand:
 
+	 Main COMMANDS:
+	 1. LIST #to see all your tasks in the Library
+	 2. BYE #I'll talk to you later
+	 3. HELP #you literally just typed this...
+	 4. WHAT? #surprise...
+
+	 Library Commands:
+	 1. TODO *insert activity*
+	 2. DEADLINE *day-time*
+	 3. EVENT *activity* /from *day-time* /to *day-time*
+	 4. MARK *task number*
+	 5. DELETE *task number*
+	____________________________________________________________
 	____________________________________________________________
 	 Great! I'm keeping track :D:
 		[T] [ ] borrow book
 	 There are 1 tasks in the library.
-
 	____________________________________________________________
-
 	____________________________________________________________
 	 Great! I'm keeping track :D:
 		[D] [ ] return book (by: Sunday)
 	 There are 2 tasks in the library.
-
 	____________________________________________________________
-
 	____________________________________________________________
 	 Great! I'm keeping track :D:
 		[E] [ ] project meeting (from: Mon 2pm to: 4pm)
 	 There are 3 tasks in the library.
-
 	____________________________________________________________
-
 	____________________________________________________________
 	Here it is!
 	1. [T] [ ] borrow book
 	2. [D] [ ] return book (by: Sunday)
 	3. [E] [ ] project meeting (from: Mon 2pm to: 4pm)
-
 	____________________________________________________________
-
 	____________________________________________________________
 	 Bye. Catch you later!
-
 	____________________________________________________________

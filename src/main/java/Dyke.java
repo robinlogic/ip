@@ -5,7 +5,7 @@ public class Dyke {
     static int accountIndex = 1;
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        String bar = "\n\t____________________________________________________________";
+        String bar = "\t____________________________________________________________";
         System.out.println( "\n" + bar + "\n\t Hello! I'm DYKE\n\t What can I do for you?\n\n" +
                 "\t\t\t\t\t\t\t\tpsst! type 'help' for help, duh.\n"
                 + bar);
@@ -127,7 +127,7 @@ public class Dyke {
         String description = fromSplit[0].trim();
 
         if (fromSplit.length != 2) {
-            throw new DykeException("You know, I kinda gotta know when it's gonna happen.\n " +
+            throw new DykeException("You know, I kinda gotta know when it's gonna happen." +
                     "\t format: /from *day-time* /to *day-time*");
         }
         String[] toSplit = fromSplit[1].split("/to", 2);
@@ -156,7 +156,18 @@ public class Dyke {
     }
 
     public static void helpLine() {
-        String helpStatement = "\t *list of commands under construction*";
+        String helpStatement = "\t COMMANDS I /actually/ understand:\n\n" +
+                "\t Main COMMANDS:\n" +
+                "\t 1. LIST #to see all your tasks in the Library\n" +
+                "\t 2. BYE #I'll talk to you later\n" +
+                "\t 3. HELP #you literally just typed this...\n" +
+                "\t 4. WHAT? #surprise...\n" +
+                "\n\t Library Commands:\n" +
+                "\t 1. TODO *insert activity*\n" +
+                "\t 2. DEADLINE *day-time*\n" +
+                "\t 3. EVENT *activity* /from *day-time* /to *day-time*\n" +
+                "\t 4. MARK *task number*\n" +
+                "\t 5. DELETE *task number*";
         System.out.println(helpStatement);
     }
 
