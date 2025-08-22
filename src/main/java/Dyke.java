@@ -1,16 +1,27 @@
+/**
+ * A chatbot called Dyke that responds according to commands
+ * within CommandType class.
+ */
+
 import java.util.Scanner;
 import java.util.List;
 public class Dyke {
     static Library library = new Library();
-    static int accountIndex = 1;
+    static int ACCOUNT_INDEX = 1;
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        String bar = "\t____________________________________________________________";
-        System.out.println( "\n" + bar + "\n\t Hello! I'm DYKE\n\t What can I do for you?\n\n" +
+
+        // Startup Banner
+        String bar = "\t______________________________________________" +
+                "______________";
+        System.out.println( "\n" + bar + "\n\t Hello! I'm DYKE\n\t" +
+                " What can I do for you?\n\n" +
                 "\t\t\t\t\t\t\t\tpsst! type 'help' for help, duh.\n"
                 + bar);
 
+        // flag for exiting while loop on "Bye!" command
         boolean running = true;
+
         while (sc.hasNextLine() && running) {
             String[] input = sc.nextLine().split(" ", 2);
             try {
@@ -34,14 +45,16 @@ public class Dyke {
                         break;
                     case MARK:
                         System.out.println(bar);
-                        library.markTask(Integer.parseInt(input[1]) - accountIndex);
+                        library.markTask(Integer.parseInt(input[1])
+                                - ACCOUNT_INDEX);
                         System.out.println(bar);
                         break;
                     case DEADLINE:
                         System.out.println(bar);
                         try {
                             if (input.length < 2) {
-                                throw new DykeException("I think you forgot the description...");
+                                throw new DykeException("I think you forgot the" +
+                                        " description...");
                             }
                             handleDeadline(input[1]);
                         } catch (DykeException e) {
@@ -98,7 +111,8 @@ public class Dyke {
             } catch (DykeException e) {
                     System.out.println(bar);
                     System.out.println(e.getMessage());
-                    System.out.println("\t Dude, IDK whats that?? type 'help' for help, bruv.\n" +
+                    System.out.println("\t Dude, IDK whats that??" +
+                            " type 'help' for help, bruv.\n" +
                             "\t Or you could just say, 'Bye!', like exactly.");
                     System.out.println(bar);
             }
@@ -107,28 +121,36 @@ public class Dyke {
     }
 
 
-    public static void handleDeadline(String input) throws DykeException {
-        if (input.isBlank()) {
+    private static void handleDeadline(String desc) throws DykeException {
+        if (desc.isBlank()) {
             throw new DykeException("I think you forgot the description...");
         }
-        String[] parts = input.split("/by", 2);
+
+        // Split input string with "/by"
+        String[] parts = desc.split("/by", 2);
+
+        // Checking if day-time is given
         if (parts.length != 2 || parts[1].isBlank()) {
             throw new DykeException("When should this be done by?");
         }
-        String description = parts[0].trim();
+
+        String activity = parts[0].trim();
         String by = parts[1].trim();
 
-        Deadline deadline  =  new Deadline(description, by);
+        Deadline deadline  =  new Deadline(activity, by);
         library.addTask(deadline);
     }
 
-    public static void handleEvent(String input) throws DykeException {
-        if (input.isBlank()) {
+    private static void handleEvent(String desc) throws DykeException {
+        if (desc.isBlank()) {
             throw new DykeException("What is this event about?");
         }
-        String[] fromSplit = input.split("/from", 2);
-        String description = fromSplit[0].trim();
 
+        // Split on /from to get Event and Period
+        String[] fromSplit = desc.split("/from", 2);
+        String activity = fromSplit[0].trim();
+
+        // Checking if From day-time given
         if (fromSplit.length != 2) {
             throw new DykeException("You know, I kinda gotta know when it's gonna happen." +
                     "\t format: /from *day-time* /to *day-time*");
@@ -136,29 +158,35 @@ public class Dyke {
         String[] toSplit = fromSplit[1].split("/to", 2);
         String from = toSplit[0].trim();
 
+        // Checking if To day-time given
+        if (toSplit.length != 2) {
+            throw new DykeException("You know, I kinda gotta know when it's gonna happen." +
+                    "\t format: /from *day-time* /to *day-time*");
+        }
+
         String to = (toSplit.length > 1) ? toSplit[1].trim() : "";
 
-        Event event = new Event(description, from, to);
+        Event event = new Event(activity, from, to);
         library.addTask(event);
     }
 
-    public static void handleTodo(String input) throws DykeException {
-        if (input.isBlank()) {
+    private static void handleTodo(String desc) throws DykeException {
+        if (desc.isBlank()) {
             throw new DykeException("Phineas, I don't know what we gonna do today!");
         }
-        String description = input.trim();
+        String description = desc.trim();
         Todo todo = new Todo(description);
         library.addTask(todo);
     }
 
-    public static void handleDelete(String input) throws DykeException {
+    private static void handleDelete(String input) throws DykeException {
         if (input.isBlank()) {
             throw new DykeException("\t What do you wanna delete?");
         }
-        library.deleteTask(Integer.parseInt(input) - accountIndex);
+        library.deleteTask(Integer.parseInt(input) - ACCOUNT_INDEX);
     }
 
-    public static void helpLine() {
+    private static void helpLine() {
         String helpStatement = "\t COMMANDS I /actually/ understand:\n\n" +
                 "\t Main COMMANDS:\n" +
                 "\t 1. LIST #to see all your tasks in the Library\n" +
