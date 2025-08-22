@@ -12,14 +12,17 @@ public class Library {
     }
 
     public Library addTask(Task task) {
-        ArrayList<Task> copy = this.library;
-        copy.add(task);
 
         System.out.println("\t Great! I'm keeping track :D:");
         System.out.println("\t\t" + task.toString());
-        System.out.println("\t " + "There are " + copy.size() + " tasks in the library.");
+        library.add(task);
+        int size = library.size();
+        System.out.printf("\t There %s %d %s in the Library.%n",
+                (size > 1 ? "are" : "is"),
+                size,
+                "task" + (size > 1 ? "s" : ""));
 
-        return new Library(copy);
+        return new Library(this.library);
     }
 
     public ArrayList<Task> getTasks() {

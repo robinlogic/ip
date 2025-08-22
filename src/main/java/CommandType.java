@@ -22,6 +22,6 @@ public enum CommandType {
                 return commandType;
             }
         }
-        throw new DykeException("Unknown command type: " + s);
+        throw new DykeException("\t Unknown command: " + s);
     }
 }

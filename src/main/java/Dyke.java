@@ -96,8 +96,11 @@ public class Dyke {
                                 "\t\t\tBut you wanna say no... \n" + bar);
                     }
             } catch (DykeException e) {
+                    System.out.println(bar);
                     System.out.println(e.getMessage());
-                    break;
+                    System.out.println("\t Dude, IDK whats that?? type 'help' for help, bruv.\n" +
+                            "\t Or you could just say, 'Bye!', like exactly.");
+                    System.out.println(bar);
             }
         }
         sc.close();

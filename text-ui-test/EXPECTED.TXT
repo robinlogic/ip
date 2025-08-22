@@ -24,17 +24,17 @@
 	____________________________________________________________
 	 Great! I'm keeping track :D:
 		[T] [ ] borrow book
-	 There are 1 tasks in the library.
+	 There is 1 task in the Library.
 	____________________________________________________________
 	____________________________________________________________
 	 Great! I'm keeping track :D:
 		[D] [ ] return book (by: Sunday)
-	 There are 2 tasks in the library.
+	 There are 2 tasks in the Library.
 	____________________________________________________________
 	____________________________________________________________
 	 Great! I'm keeping track :D:
 		[E] [ ] project meeting (from: Mon 2pm to: 4pm)
-	 There are 3 tasks in the library.
+	 There are 3 tasks in the Library.
 	____________________________________________________________
 	____________________________________________________________
 	Here it is!
