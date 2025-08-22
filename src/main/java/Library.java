@@ -37,10 +37,12 @@ public class Library {
         if (index < 0 || index >= this.library.size()) {
             System.out.println("\tHey... That doesn't exist!");
         }
-        Task task = this.getTask(index).isDone();
-        this.library.set(index, task);
-        System.out.println("\tNice Work! I have marked this task as done:");
-        System.out.println("\t" + (index + 1) + ". " + task);
+        else {
+            Task task = this.getTask(index).isDone();
+            this.library.set(index, task);
+            System.out.println("\tNice Work! I have marked this task as done:");
+            System.out.println("\t" + (index + 1) + ". " + task);
+        }
     }
 
     public void deleteTask(int index){
