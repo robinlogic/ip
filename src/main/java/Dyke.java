@@ -1,6 +1,6 @@
 /**
  * A chatbot called Dyke that responds according to commands
- * within CommandType class.
+ * within {@code CommandType} class.
  */
 
 import java.util.Scanner;
@@ -20,9 +20,9 @@ public class Dyke {
                 + bar);
 
         // flag for exiting while loop on "Bye!" command
-        boolean running = true;
+        boolean isRunning = true;
 
-        while (sc.hasNextLine() && running) {
+        while (sc.hasNextLine() && isRunning) {
             String[] input = sc.nextLine().split(" ", 2);
             try {
                 CommandType command = CommandType.fromString(input[0]);
@@ -31,7 +31,7 @@ public class Dyke {
 
                     case BYE:
                         System.out.println(bar + "\n\t Bye. Catch you later!\n" + bar);
-                        running = false;
+                        isRunning = false;
                         break;
                     case LIST:
                         System.out.print(bar);
