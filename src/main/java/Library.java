@@ -25,6 +25,12 @@ public class Library {
         return new Library(this.library);
     }
 
+    // Does adding tasks silently when loading from file
+    public Library silentAdd(Task task) {
+        library.add(task);
+        return new Library(this.library);
+    }
+
     public ArrayList<Task> getTasks() {
         return this.library;
     }

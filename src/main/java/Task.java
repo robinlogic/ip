@@ -18,6 +18,10 @@ public class Task {
         return this.description;
     }
 
+    public String encode() {
+        return (done ? "1" : "0") + " | "  + this.description;
+    }
+
     @Override
     public String toString() {
         return (done ? "[X] " : "[ ] ") + this.description;
