@@ -1,20 +1,22 @@
 public class Event extends Task {
-    private String from;
-    private String to;
-    public Event(String desc, String from, String to) {
+    private DateTimeParser from;
+    private DateTimeParser to;
+
+    public Event(String desc, String from, String to) throws DykeException {
         super(desc);
-        this.from = from;
-        this.to = to;
+        this.from = DateTimeParser.parse(from);
+        this.to = DateTimeParser.parse(to);
     }
 
     @Override
     public String encode() {
         return "E | " + super.encode() + " | "
-                + this.from + " | " + this.to;
+                + this.from.reString() + " | " + this.to.reString();
     }
 
     @Override
     public String toString() {
-        return "[E] " + super.toString() + " (from: " + this.from + " to: " + this.to + ")";
+        return "[E] " + super.toString() + " (from: " + this.from.reString()
+                + " to: " + this.to.reString() + ")";
     }
 }

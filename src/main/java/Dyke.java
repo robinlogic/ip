@@ -4,11 +4,15 @@
  */
 
 import java.util.Scanner;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Dyke {
     static Library library = new Library();
-    static int ACCOUNT_INDEX = 1;
+
+    // file location for saved tasks
+    static String FILE_PATH = "./data/dyke.txt";
+
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
@@ -23,11 +27,8 @@ public class Dyke {
         // flag for exiting while loop on "Bye!" command
         boolean isRunning = true;
 
-        // file location for saved tasks
-        String filePath = "./data/dyke.txt";
-
         // Loadin existing Tasks into Library
-        Storage storage = new Storage(filePath);
+        Storage storage = new Storage(FILE_PATH);
         storage.loadTasks(library);
 
         // Create Parse Engine

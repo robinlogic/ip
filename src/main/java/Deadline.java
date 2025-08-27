@@ -1,19 +1,22 @@
-public class Deadline extends Task {
-    private String deadline;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-    public Deadline(String desc, String deadline) {
+public class Deadline extends Task {
+    private DateTimeParser deadline;
+
+    public Deadline(String desc, String deadline) throws DykeException {
         super(desc);
-        this.deadline = deadline;
+        this.deadline = DateTimeParser.parse(deadline);
     }
 
     @Override
     public String encode() {
         return "D | " + super.encode() + " | "
-                + this.deadline;
+                + this.deadline.reString();
     }
 
     @Override
     public String toString() {
-        return "[D] " + super.toString() + " (by: " + this.deadline + ")";
+        return "[D] " + super.toString() + " (by: " + this.deadline.reString() + ")";
     }
 }

@@ -1,5 +1,3 @@
-import javafx.scene.web.HTMLEditorSkin;
-
 public class Parser {
     private static final int ACCOUNT_INDEX = 1;
     private boolean isRunning = true;
@@ -158,6 +156,7 @@ public class Parser {
 
     private void helpLine() {
         String helpStatement = "\t COMMANDS I /actually/ understand:\n\n" +
+                "\t DAY-TIME Format: yyyy-MM-dd hh:mm\n\n" +
                 "\t Main COMMANDS:\n" +
                 "\t 1. LIST #to see all your tasks in the Library\n" +
                 "\t 2. BYE #I'll talk to you later\n" +
