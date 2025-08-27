@@ -5,9 +5,11 @@
 
 								psst! type 'help' for help, duh.
 	____________________________________________________________
-Loaded tasks: 0
+No saved tasks found. Starting fresh!
 	____________________________________________________________
 	 COMMANDS I /actually/ understand:
+
+	 DAY-TIME Format: yyyy-MM-dd hh:mm
 
 	 Main COMMANDS:
 	 1. LIST #to see all your tasks in the Library
@@ -28,21 +30,24 @@ Loaded tasks: 0
 	 There is 1 task in the Library.
 	____________________________________________________________
 	____________________________________________________________
+	 Invalid datetime: 202508-27
+
+	____________________________________________________________
+	____________________________________________________________
 	 Great! I'm keeping track :D:
-		[D] [ ] return book (by: Sunday)
+		[D] [ ] return book (by: 2025-08-27)
 	 There are 2 tasks in the Library.
 	____________________________________________________________
 	____________________________________________________________
 	 Great! I'm keeping track :D:
-		[E] [ ] project meeting (from: Mon 2pm to: 4pm)
+		[E] [ ] project meeting (from: 2025-08-27 14:00 to: 2025-08-27 16:00)
 	 There are 3 tasks in the Library.
 	____________________________________________________________
 	____________________________________________________________
-
 	Here it is!
 	1. [T] [ ] borrow book
-	2. [D] [ ] return book (by: Sunday)
-	3. [E] [ ] project meeting (from: Mon 2pm to: 4pm)
+	2. [D] [ ] return book (by: 2025-08-27)
+	3. [E] [ ] project meeting (from: 2025-08-27 14:00 to: 2025-08-27 16:00)
 	____________________________________________________________
 	____________________________________________________________
 	 Bye. Catch you later!

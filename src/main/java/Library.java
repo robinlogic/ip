@@ -25,7 +25,9 @@ public class Library {
         return new Library(this.library);
     }
 
-    // Does adding tasks silently when loading from file
+    /**
+     * Does adding of tasks silently when loading from file
+      */
     public Library silentAdd(Task task) {
         library.add(task);
         return new Library(this.library);
@@ -76,7 +78,7 @@ public class Library {
         if (this.isEmpty()) {
             System.out.println("\n\tlist is empty :(");
         } else {
-            System.out.println("\n\tHere it is!");
+            System.out.println("\tHere it is!");
             for (int i = 0; i < this.size(); i++) {
                 System.out.println("\t" + (i + 1) + ". " + this.getTask(i));
             }
