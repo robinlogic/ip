@@ -1,4 +1,11 @@
-public class WhatCommand extends  Command {
+package dyke.command;
+
+import dyke.data.Library;
+import dyke.parse.CommandType;
+import dyke.parse.Storage;
+import dyke.ui.Ui;
+
+public class WhatCommand extends Command {
     public WhatCommand() {
         super(CommandType.WHAT);
     }

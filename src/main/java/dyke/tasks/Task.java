@@ -1,10 +1,10 @@
-
+package dyke.tasks;
 
 public class Task {
     protected String description;
     protected boolean done;
 
-    Task(String desc) {
+    public Task(String desc) {
         this.description = desc;
         this.done = false;
     }

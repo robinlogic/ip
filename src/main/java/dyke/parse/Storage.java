@@ -1,9 +1,15 @@
+package dyke.parse;
+
+import dyke.data.Library;
+import dyke.tasks.Deadline;
+import dyke.tasks.Event;
+import dyke.tasks.Task;
+import dyke.tasks.Todo;
+
 import java.io.*;
-import java.io.IOException;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Storage {
@@ -51,7 +57,7 @@ public class Storage {
         }
     }
 
-    // Decoder for decoding data from saved file
+    // Decoder for decoding dyke.data from saved file
     private Task decode(String line) throws DykeException{
         String[] parts = line.split(" \\| ");
         String type = parts[0];

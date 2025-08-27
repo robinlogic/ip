@@ -1,3 +1,7 @@
+package dyke.data;
+
+import dyke.tasks.Task;
+
 import java.util.ArrayList;
 
 public class Library {
@@ -17,7 +21,7 @@ public class Library {
                 "\t" + task.toString();
         library.add(task);
         int size = library.size();
-        return res + String.format("\n There %s %d %s in the Library.%n",
+        return res + String.format("\n There %s %d %s in the dyke.data.Library.%n",
                 (size > 1 ? "are" : "is"),
                 size,
                 "task" + (size > 1 ? "s" : ""));
@@ -59,7 +63,7 @@ public class Library {
 
         Task task = this.getTask(index);
         library.remove(index);
-        return "As you wish... Begone Task!:" +
+        return "As you wish... Begone dyke.tasks.Task!:" +
             "\n\t" + task + "\nNow you have " + this.size() + " tasks.";
 
     }

@@ -1,3 +1,10 @@
+package dyke.command;
+
+import dyke.data.Library;
+import dyke.parse.CommandType;
+import dyke.parse.Storage;
+import dyke.ui.Ui;
+
 public abstract class Command {
     protected CommandType command;
 

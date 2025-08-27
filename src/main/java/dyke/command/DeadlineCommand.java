@@ -1,3 +1,12 @@
+package dyke.command;
+
+import dyke.data.Library;
+import dyke.parse.CommandType;
+import dyke.parse.DykeException;
+import dyke.parse.Storage;
+import dyke.tasks.Deadline;
+import dyke.ui.Ui;
+
 public class DeadlineCommand extends Command {
     private final String desc;
     public DeadlineCommand(String desc) {

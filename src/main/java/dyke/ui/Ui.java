@@ -1,3 +1,5 @@
+package dyke.ui;
+
 public class Ui {
     private final String BAR = "\t______________________" +
             "________________________" +

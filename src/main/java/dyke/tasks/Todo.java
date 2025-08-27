@@ -1,4 +1,6 @@
-public class Todo extends Task{
+package dyke.tasks;
+
+public class Todo extends Task {
     public Todo(String desc) {
         super(desc);
     }

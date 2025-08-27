@@ -1,3 +1,5 @@
+package dyke.parse;
+
 public enum CommandType {
     TODO("TODO"),
     DEADLINE("DEADLINE"),
@@ -22,6 +24,6 @@ public enum CommandType {
                 return commandType;
             }
         }
-        throw new DykeException("\t Unknown command: " + s);
+        throw new DykeException(" Unknown command: " + s);
     }
 }

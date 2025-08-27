@@ -12,12 +12,12 @@ No saved tasks found. Starting fresh!
 	 DAY-TIME Format: yyyy-MM-dd hh:mm
 
 	 Main COMMANDS:
-	 1. LIST #to see all your tasks in the Library
+	 1. LIST #to see all your tasks in the dyke.data.Library
 	 2. BYE #I'll talk to you later
 	 3. HELP #you literally just typed this...
 	 4. WHAT? #surprise...
 
-	 Library Commands:
+	 dyke.data.Library Commands:
 	 1. TODO *insert activity*
 	 2. DEADLINE *day-time*
 	 3. EVENT *activity* /from *day-time* /to *day-time*
@@ -27,7 +27,7 @@ No saved tasks found. Starting fresh!
 	____________________________________________________________
 	 Great! I'm keeping track :D:
 		[T] [ ] borrow book
-	 There is 1 task in the Library.
+	 There is 1 task in the dyke.data.Library.
 	____________________________________________________________
 	____________________________________________________________
 	 Invalid datetime: 202508-27
@@ -36,12 +36,12 @@ No saved tasks found. Starting fresh!
 	____________________________________________________________
 	 Great! I'm keeping track :D:
 		[D] [ ] return book (by: 2025-08-27)
-	 There are 2 tasks in the Library.
+	 There are 2 tasks in the dyke.data.Library.
 	____________________________________________________________
 	____________________________________________________________
 	 Great! I'm keeping track :D:
 		[E] [ ] project meeting (from: 2025-08-27 14:00 to: 2025-08-27 16:00)
-	 There are 3 tasks in the Library.
+	 There are 3 tasks in the dyke.data.Library.
 	____________________________________________________________
 	____________________________________________________________
 	Here it is!

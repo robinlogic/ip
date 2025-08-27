@@ -1,7 +1,8 @@
-/**
- * A chatbot called Dyke that responds according to commands
- * within {@code CommandType} class.
- */
+package dyke.ui;
+
+import dyke.data.Library;
+import dyke.parse.Parser;
+import dyke.parse.Storage;
 
 import java.util.Scanner;
 
@@ -18,10 +19,10 @@ public class Dyke {
         // Print Welcome Message
         ui.welcomeMessage();
 
-        // flag for exiting while loop on "Bye!" command
+        // flag for exiting while loop on "Bye!" dyke.command
         boolean isRunning = true;
 
-        // Loadin existing Tasks into Library
+        // Loadin existing Tasks into dyke.data.Library
         Storage storage = new Storage(FILE_PATH);
         ui.printMessageNoBar(storage.loadTasks(library));
 
@@ -37,7 +38,7 @@ public class Dyke {
 
         }
 
-        // Save current tasks into Dyke.txt
+        // Save current tasks into dyke.ui.Dyke.txt
         if (!library.isEmpty()) {
             ui.printMessageNoBar(storage.saveTasks(library));
         }

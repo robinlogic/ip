@@ -1,3 +1,8 @@
+package dyke.tasks;
+
+import dyke.parse.DateTimeParser;
+import dyke.parse.DykeException;
+
 public class Event extends Task {
     private DateTimeParser from;
     private DateTimeParser to;

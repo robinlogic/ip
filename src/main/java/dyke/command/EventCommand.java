@@ -1,3 +1,12 @@
+package dyke.command;
+
+import dyke.data.Library;
+import dyke.parse.CommandType;
+import dyke.parse.DykeException;
+import dyke.parse.Storage;
+import dyke.tasks.Event;
+import dyke.ui.Ui;
+
 public class EventCommand extends Command {
     private final String desc;
     public EventCommand(String desc) {
@@ -19,7 +28,7 @@ public class EventCommand extends Command {
             throw new DykeException("What is this event about?");
         }
 
-        // Split on /from to get Event and Period
+        // Split on /from to get dyke.tasks.Event and Period
         String[] fromSplit = desc.split("/from", 2);
         String activity = fromSplit[0].trim();
 
