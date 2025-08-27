@@ -4,8 +4,6 @@
  */
 
 import java.util.Scanner;
-import java.time.LocalDateTime;
-import java.util.List;
 
 public class Dyke {
     static Library library = new Library();
@@ -15,30 +13,24 @@ public class Dyke {
 
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
+        Ui ui = new Ui(); // User Interface class
 
-        // Startup Banner
-        String bar = "\t______________________________________________" +
-                "______________";
-        System.out.println( "\n" + bar + "\n\t Hello! I'm DYKE\n\t" +
-                " What can I do for you?\n\n" +
-                "\t\t\t\t\t\t\t\tpsst! type 'help' for help, duh.\n"
-                + bar);
+        // Print Welcome Message
+        ui.welcomeMessage();
 
         // flag for exiting while loop on "Bye!" command
         boolean isRunning = true;
 
         // Loadin existing Tasks into Library
         Storage storage = new Storage(FILE_PATH);
-        storage.loadTasks(library);
+        ui.printMessageNoBar(storage.loadTasks(library));
 
         // Create Parse Engine
-        Parser parser = new Parser(library);
+        Parser parser = new Parser(library, ui, storage);
 
         while (sc.hasNextLine() && isRunning) {
             String[] input = sc.nextLine().split(" ", 2);
-            System.out.println(bar);
             parser.parseCommand(input);
-            System.out.println(bar);
             if (!parser.isRunning()) {
                 break;
             }
@@ -47,7 +39,7 @@ public class Dyke {
 
         // Save current tasks into Dyke.txt
         if (!library.isEmpty()) {
-            storage.saveTasks(library);
+            ui.printMessageNoBar(storage.saveTasks(library));
         }
         sc.close();
     }

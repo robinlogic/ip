@@ -1,0 +1,28 @@
+public class Ui {
+    private final String BAR = "\t______________________" +
+            "________________________" +
+            "______________";
+    public void printMessage(String message) {
+        String[] sep = message.split("\n");
+        System.out.println(BAR);
+        for (String s : sep) {
+            System.out.println("\t" + s);
+        }
+        System.out.println(BAR);
+    }
+
+    public void printMessageNoBar(String message) {
+        String[] sep = message.split("\n");
+        for (String s : sep) {
+            System.out.println("\t" + s);
+        }
+    }
+
+    public void welcomeMessage() {
+        String welcome = "\n Hello! I'm DYKE\n" +
+                " What can I do for you?\n\n" +
+                "\t\t\t\t\t\t\tpsst! type 'help' for help, duh.";
+        this.printMessage(welcome);
+    }
+
+}

@@ -2,9 +2,13 @@ public class Parser {
     private static final int ACCOUNT_INDEX = 1;
     private boolean isRunning = true;
     private Library library; // Library is Mutable
+    private Ui ui;
+    private Storage storage;
 
-    public Parser(Library library) {
+    public Parser(Library library, Ui ui, Storage storage) {
         this.library = library;
+        this.ui = ui;
+        this.storage = storage;
     }
 
     public boolean isRunning() {
@@ -18,18 +22,19 @@ public class Parser {
             switch (command) {
 
                 case BYE:
-                    System.out.println("\t Bye. Catch you later!");
-                    this.isRunning = false;
+                    ByeCommand bye  = new ByeCommand();
+                    bye.execute(library, ui, storage);
+                    this.isRunning = bye.isExit();
                     break;
                 case LIST:
-                    this.library.PrintList();
+                    new ListCommand().execute(library, ui, storage);
                     break;
                 case HELP:
-                    helpLine();
+                    new HelpCommand().execute(library, ui, storage);
                     break;
                 case MARK:
-                    this.library.markTask(Integer.parseInt(input[1])
-                            - ACCOUNT_INDEX);
+                    new MarkCommand(Integer.parseInt(input[1]) - ACCOUNT_INDEX)
+                        .execute(library, ui, storage);
                     break;
                 case DEADLINE:
                     try {
@@ -37,9 +42,9 @@ public class Parser {
                             throw new DykeException("I think you forgot the" +
                                     " description...");
                         }
-                        handleDeadline(input[1]);
+                        new DeadlineCommand(input[1]).execute(library, ui, storage);
                     } catch (DykeException e) {
-                        System.out.println("\t " + e.getMessage() + "\n");
+                        ui.printMessage(" " + e.getMessage());
                     }
                     break;
 
@@ -49,9 +54,9 @@ public class Parser {
                             throw new DykeException("Phineas, I don't know what " +
                                     "we're gonna do today!");
                         }
-                        handleTodo(input[1]);
+                        new TodoCommand(input[1]).execute(library, ui, storage);
                     } catch (DykeException e) {
-                        System.out.println("\t " + e.getMessage() + "\n");
+                        ui.printMessage(" " + e.getMessage());
                     }
                     break;
 
@@ -60,9 +65,9 @@ public class Parser {
                         if (input.length < 2) {
                             throw new DykeException("What is this event about?");
                         }
-                        handleEvent(input[1]);
+                        new EventCommand(input[1]).execute(library, ui, storage);
                     } catch (DykeException e) {
-                        System.out.println("\t " + e.getMessage() + "\n");
+                        ui.printMessage(" " + e.getMessage());
                     }
                     break;
 
@@ -71,25 +76,23 @@ public class Parser {
                         if (input.length < 2) {
                             throw new DykeException("What do you wanna delete?");
                         }
-                        handleDelete(input[1]);
+                        new DeleteCommand(Integer.parseInt(input[1]))
+                            .execute(library, ui, storage);
                     } catch (DykeException e) {
                         System.out.println("\t " + e.getMessage() + "\n");
                     }
                     break;
                 case WHAT:
-                    System.out.println("\tWhat do you mean?\n " +
-                            "\t\tWhen you nod your head yes,\n" +
-                            "\t\t\tBut you wanna say no... \n");
+                    new WhatCommand().execute(library, ui, storage);
             }
         } catch (DykeException e) {
-            System.out.println(e.getMessage());
-            System.out.println("\t Dude, IDK whats that??" +
+            ui.printMessage(e.getMessage() + "\n Dude, IDK whats that??" +
                     " type 'help' for help, bruv.\n" +
-                    "\t Or you could just say, 'Bye!', like exactly.");
+                    " Or you could just say, 'Bye!', like exactly.");
         }
     }
 
-    private void handleDeadline(String desc) throws DykeException {
+    /*private void handleDeadline(String desc) throws DykeException {
         if (desc.isBlank()) {
             throw new DykeException("I think you forgot the description...");
         }
@@ -107,9 +110,9 @@ public class Parser {
 
         Deadline deadline  =  new Deadline(activity, by);
         this.library.addTask(deadline);
-    }
+    }*/
 
-    private void handleEvent(String desc) throws DykeException {
+    /*private void handleEvent(String desc) throws DykeException {
         if (desc.isBlank()) {
             throw new DykeException("What is this event about?");
         }
@@ -136,25 +139,25 @@ public class Parser {
 
         Event event = new Event(activity, from, to);
         this.library.addTask(event);
-    }
+    }*/
 
-    private void handleTodo(String desc) throws DykeException {
+    /*private void handleTodo(String desc) throws DykeException {
         if (desc.isBlank()) {
             throw new DykeException("Phineas, I don't know what we gonna do today!");
         }
         String description = desc.trim();
         Todo todo = new Todo(description);
         this.library.addTask(todo);
-    }
+    }*/
 
-    private void handleDelete(String input) throws DykeException {
+    /*private void handleDelete(String input) throws DykeException {
         if (input.isBlank()) {
             throw new DykeException("\t What do you wanna delete?");
         }
         this.library.deleteTask(Integer.parseInt(input) - ACCOUNT_INDEX);
-    }
+    }*/
 
-    private void helpLine() {
+    /*private void helpLine() {
         String helpStatement = "\t COMMANDS I /actually/ understand:\n\n" +
                 "\t DAY-TIME Format: yyyy-MM-dd hh:mm\n\n" +
                 "\t Main COMMANDS:\n" +
@@ -169,5 +172,5 @@ public class Parser {
                 "\t 4. MARK *task number*\n" +
                 "\t 5. DELETE *task number*";
         System.out.println(helpStatement);
-    }
+    }*/
 }

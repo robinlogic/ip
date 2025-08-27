@@ -11,18 +11,17 @@ public class Library {
         this.library = library;
     }
 
-    public Library addTask(Task task) {
+    public String addTask(Task task) {
 
-        System.out.println("\t Great! I'm keeping track :D:");
-        System.out.println("\t\t" + task.toString());
+        String res = " Great! I'm keeping track :D:\n" +
+                "\t" + task.toString();
         library.add(task);
         int size = library.size();
-        System.out.printf("\t There %s %d %s in the Library.%n",
+        return res + String.format("\n There %s %d %s in the Library.%n",
                 (size > 1 ? "are" : "is"),
                 size,
                 "task" + (size > 1 ? "s" : ""));
 
-        return new Library(this.library);
     }
 
     /**
@@ -41,28 +40,27 @@ public class Library {
         return this.library.get(index);
     }
 
-    public void markTask(int index){
+    public String markTask(int index){
         if (index < 0 || index >= this.library.size()) {
-            System.out.println("\tHey... That doesn't exist!");
+            return "Hey... That doesn't exist!";
         }
         else {
             Task task = this.getTask(index).isDone();
             this.library.set(index, task);
-            System.out.println("\tNice Work! I have marked this task as done:");
-            System.out.println("\t" + (index + 1) + ". " + task);
+            return "Nice Work! I have marked this task as done:" +
+                    "\n" + (index + 1) + ". " + task;
         }
     }
 
-    public void deleteTask(int index){
+    public String deleteTask(int index){
         if (index < 0 || index >= this.library.size()) {
-            System.out.println("\tHey... That doesn't exist!");
+            return "Hey... That doesn't exist!";
         }
 
         Task task = this.getTask(index);
         library.remove(index);
-        System.out.println("\tAs you wish... Begone Task!:");
-        System.out.println("\t\t" + task);
-        System.out.println("\tNow you have " + this.size() + " tasks.");
+        return "As you wish... Begone Task!:" +
+            "\n\t" + task + "\nNow you have " + this.size() + " tasks.";
 
     }
 
@@ -74,14 +72,15 @@ public class Library {
         return this.library.size();
     }
 
-    public void PrintList() {
+    public String PrintList() {
         if (this.isEmpty()) {
-            System.out.println("\n\tlist is empty :(");
+            return "list is empty :(";
         } else {
-            System.out.println("\tHere it is!");
+            StringBuilder res = new StringBuilder("Here it is!");
             for (int i = 0; i < this.size(); i++) {
-                System.out.println("\t" + (i + 1) + ". " + this.getTask(i));
+                res.append("\n").append(i + 1).append(". ").append(this.getTask(i));
             }
+            return res.toString();
         }
     }
 }

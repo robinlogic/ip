@@ -1,0 +1,26 @@
+public class TodoCommand extends Command {
+    private final String desc;
+    public TodoCommand(String desc) {
+        super(CommandType.TODO);
+        this.desc = desc;
+
+    }
+
+    @Override
+    public void execute(Library library, Ui ui, Storage storage) {
+        try {
+            ui.printMessage(handleTodo(desc, library));
+        } catch (DykeException e) {
+            ui.printMessage(e.getMessage());
+        }
+    }
+
+    private String handleTodo(String desc, Library library) throws DykeException {
+        if (desc.isBlank()) {
+            throw new DykeException("Phineas, I don't know what we gonna do today!");
+        }
+        String description = desc.trim();
+        Todo todo = new Todo(description);
+        return library.addTask(todo);
+    }
+}

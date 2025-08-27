@@ -16,23 +16,23 @@ public class Storage {
         file.getParentFile().mkdirs();
     }
 
-    public void saveTasks(Library library) {
+    public String saveTasks(Library library) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (Task task : library.getTasks()) {
                 writer.write(task.encode());
                 writer.newLine();
             }
-            System.out.println(library.getTasks().size() + " tasks have been saved!");
+            return library.getTasks().size() + " tasks have been saved!";
         } catch (IOException e) {
-            System.out.println("Error saving tasks: " + e.getMessage());
+            return "Error saving tasks: " + e.getMessage();
         }
     }
 
-    public void loadTasks(Library library) {
+    public String loadTasks(Library library) {
         File file = new File(filePath);
 
         if (!file.exists()) {
-            System.out.println("No saved tasks found. Starting fresh!");
+            return "No saved tasks found. Starting fresh!";
         }
         else {
             try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -41,12 +41,12 @@ public class Storage {
                     try {
                         library.silentAdd(this.decode(line));
                     } catch (DykeException e) {
-                        System.out.println(e.getMessage());
+                        return e.getMessage();
                     }
                 }
-                System.out.println("Loaded tasks: " + library.getTasks().size());
+                return "Loaded tasks: " + library.getTasks().size();
             } catch (IOException e) {
-                System.out.println("Error loading tasks: " + e.getMessage());
+                return "Error loading tasks: " + e.getMessage();
             }
         }
     }
