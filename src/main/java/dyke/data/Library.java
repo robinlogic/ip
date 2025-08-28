@@ -108,7 +108,7 @@ public class Library {
      *
      * @return A view of the Library in a readable format.
      */
-    public String PrintList() {
+    public String printList() {
         if (this.isEmpty()) {
             return "list is empty :(";
         } else {
