@@ -35,69 +35,69 @@ public class Parser {
 
             switch (command) {
 
-                case BYE:
-                    ByeCommand bye  = new ByeCommand();
-                    bye.execute(library, ui, storage);
-                    this.isRunning = false;
-                    break;
-                case LIST:
-                    new ListCommand().execute(library, ui, storage);
-                    break;
-                case HELP:
-                    new HelpCommand().execute(library, ui, storage);
-                    break;
-                case MARK:
-                    new MarkCommand(Integer.parseInt(input[1]) - ACCOUNT_INDEX)
+            case BYE:
+                ByeCommand bye  = new ByeCommand();
+                bye.execute(library, ui, storage);
+                this.isRunning = false;
+                break;
+            case LIST:
+                new ListCommand().execute(library, ui, storage);
+                break;
+            case HELP:
+                new HelpCommand().execute(library, ui, storage);
+                break;
+            case MARK:
+                new MarkCommand(Integer.parseInt(input[1]) - ACCOUNT_INDEX)
+                    .execute(library, ui, storage);
+                break;
+            case DEADLINE:
+                try {
+                    if (input.length < 2) {
+                        throw new DykeException("I think you forgot the" +
+                                " description...");
+                    }
+                    new DeadlineCommand(input[1]).execute(library, ui, storage);
+                } catch (DykeException e) {
+                    ui.printMessage(e.getMessage());
+                }
+                break;
+
+            case TODO:
+                try {
+                    if (input.length < 2) {
+                        throw new DykeException("Phineas, I don't know what " +
+                                "we're gonna do today!");
+                    }
+                    new TodoCommand(input[1]).execute(library, ui, storage);
+                } catch (DykeException e) {
+                    ui.printMessage(e.getMessage());
+                }
+                break;
+
+            case EVENT:
+                try {
+                    if (input.length < 2) {
+                        throw new DykeException("What is this event about?");
+                    }
+                    new EventCommand(input[1]).execute(library, ui, storage);
+                } catch (DykeException e) {
+                    ui.printMessage(e.getMessage());
+                }
+                break;
+
+            case DELETE:
+                try {
+                    if (input.length < 2) {
+                        throw new DykeException("What do you wanna delete?");
+                    }
+                    new DeleteCommand(Integer.parseInt(input[1]))
                         .execute(library, ui, storage);
-                    break;
-                case DEADLINE:
-                    try {
-                        if (input.length < 2) {
-                            throw new DykeException("I think you forgot the" +
-                                    " description...");
-                        }
-                        new DeadlineCommand(input[1]).execute(library, ui, storage);
-                    } catch (DykeException e) {
-                        ui.printMessage(e.getMessage());
-                    }
-                    break;
-
-                case TODO:
-                    try {
-                        if (input.length < 2) {
-                            throw new DykeException("Phineas, I don't know what " +
-                                    "we're gonna do today!");
-                        }
-                        new TodoCommand(input[1]).execute(library, ui, storage);
-                    } catch (DykeException e) {
-                        ui.printMessage(e.getMessage());
-                    }
-                    break;
-
-                case EVENT:
-                    try {
-                        if (input.length < 2) {
-                            throw new DykeException("What is this event about?");
-                        }
-                        new EventCommand(input[1]).execute(library, ui, storage);
-                    } catch (DykeException e) {
-                        ui.printMessage(e.getMessage());
-                    }
-                    break;
-
-                case DELETE:
-                    try {
-                        if (input.length < 2) {
-                            throw new DykeException("What do you wanna delete?");
-                        }
-                        new DeleteCommand(Integer.parseInt(input[1]))
-                            .execute(library, ui, storage);
-                    } catch (DykeException e) {
-                        System.out.println("\t " + e.getMessage() + "\n");
-                    }
-                    break;
-                case WHAT:
-                    new WhatCommand().execute(library, ui, storage);
+                } catch (DykeException e) {
+                    System.out.println("\t " + e.getMessage() + "\n");
+                }
+                break;
+            case WHAT:
+                new WhatCommand().execute(library, ui, storage);
             }
         } catch (DykeException e) {
             ui.printMessage(e.getMessage() + "\n Dude, IDK whats that??" +
