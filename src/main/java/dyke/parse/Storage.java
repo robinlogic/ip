@@ -16,12 +16,21 @@ public class Storage {
     private final String filePath;
     private ArrayList<Task> library;
 
+    /**
+     * Creates {@code Storage Object} for reading/writing into "dyke.txt".
+     * @param filePath Predetermined file path.
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
         File file = new File(filePath);
         file.getParentFile().mkdirs();
     }
 
+    /**
+     * Saves tasks from {@code Library} into "dyke.txt".
+     * @param library {@code Library} containing tasks.
+     * @return The message after {@code saveTasks} operation.
+     */
     public String saveTasks(Library library) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (Task task : library.getTasks()) {
@@ -34,6 +43,12 @@ public class Storage {
         }
     }
 
+    /**
+     * Loads tasks from "dyke.txt", if it exists from a
+     * previous session.
+     * @param library {@code Library} of tasks
+     * @return The message after {@code loadTasks} operation.
+     */
     public String loadTasks(Library library) {
         File file = new File(filePath);
 

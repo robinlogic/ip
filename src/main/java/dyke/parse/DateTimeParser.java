@@ -24,6 +24,12 @@ public class DateTimeParser {
         this.format = fmt;
     }
 
+    /**
+     * Helper method to Parse Datetime based on recognized formats.
+     * @param input String datetime input from User.
+     * @return DateTimeParser object for internal tracking.
+     * @throws DykeException If datetime input is not in a recognized format.
+     */
     public static DateTimeParser parse(String input) throws DykeException {
         try {
             // if it's just a date

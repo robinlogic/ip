@@ -1,6 +1,10 @@
 package dyke.tasks;
 
 public class Todo extends Task {
+    /**
+     * Creates a {@code Todo} task.
+     * @param desc Description of task.
+     */
     public Todo(String desc) {
         super(desc);
     }

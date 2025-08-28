@@ -6,6 +6,12 @@ import dyke.parse.DykeException;
 public class Deadline extends Task {
     private DateTimeParser deadline;
 
+    /**
+     * Creates a {@code Deadline} task.
+     * @param desc Description of task.
+     * @param deadline End datetime
+     * @throws DykeException If inputs are unrecognized.
+     */
     public Deadline(String desc, String deadline) throws DykeException {
         super(desc);
         this.deadline = DateTimeParser.parse(deadline);

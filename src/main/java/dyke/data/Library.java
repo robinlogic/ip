@@ -15,6 +15,11 @@ public class Library {
         this.library = library;
     }
 
+    /**
+     * Adds tasks into Library.
+     * @param task Valid task.
+     * @return The message after the addTask operation.
+     */
     public String addTask(Task task) {
 
         String res = " Great! I'm keeping track :D:\n" +
@@ -29,13 +34,18 @@ public class Library {
     }
 
     /**
-     * Does adding of tasks silently when loading from file
-      */
-    public Library silentAdd(Task task) {
+     * Adds tasks silently into Library when loading from file in disk.
+     *
+     * @param task A valid task.
+     */
+    public void silentAdd(Task task) {
         library.add(task);
-        return new Library(this.library);
     }
 
+    /**
+     * Getter method for tasks in Library
+     * @return Library
+     */
     public ArrayList<Task> getTasks() {
         return this.library;
     }
@@ -44,6 +54,11 @@ public class Library {
         return this.library.get(index);
     }
 
+    /**
+     * Marks tasks with "done" in the Library.
+     * @param index Task number; non-zero indexing.
+     * @return The message after the markTask operation.
+     */
     public String markTask(int index){
         if (index < 0 || index >= this.library.size()) {
             return "Hey... That doesn't exist!";
@@ -56,6 +71,11 @@ public class Library {
         }
     }
 
+    /**
+     * Deletes task from Library.
+     * @param index Task number; non-zero indexing.
+     * @return The message after the deleteTask operation.
+     */
     public String deleteTask(int index){
         if (index < 0 || index >= this.library.size()) {
             return "Hey... That doesn't exist!";
@@ -68,14 +88,26 @@ public class Library {
 
     }
 
+    /**
+     * Checks if Library is empty.
+     * @return boolean
+     */
     public boolean isEmpty() {
         return this.library.isEmpty();
     }
 
+    /**
+     * Number of tasks in Library.
+     * @return int
+     */
     public int size() {
         return this.library.size();
     }
 
+    /**
+     *
+     * @return A view of the Library in a readable format.
+     */
     public String PrintList() {
         if (this.isEmpty()) {
             return "list is empty :(";

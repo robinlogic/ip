@@ -17,10 +17,18 @@ public class Parser {
         this.storage = storage;
     }
 
+    /**
+     * Asserts if "Bye!" command has been invoked.
+     * @return {@code boolean}
+     */
     public boolean isRunning() {
         return isRunning;
     }
 
+    /**
+     * Parses commands from User.
+     * @param input The inputs from User
+     */
     public void parseCommand(String[] input) {
         try {
             CommandType command = CommandType.fromString(input[0]);

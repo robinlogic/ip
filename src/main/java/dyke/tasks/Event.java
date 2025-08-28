@@ -7,6 +7,13 @@ public class Event extends Task {
     private DateTimeParser from;
     private DateTimeParser to;
 
+    /**
+     * Creates an {@code Event} task.
+     * @param desc Description of event.
+     * @param from Start datetime
+     * @param to End datetime
+     * @throws DykeException If any inputs are unrecognized.
+     */
     public Event(String desc, String from, String to) throws DykeException {
         super(desc);
         this.from = DateTimeParser.parse(from);
