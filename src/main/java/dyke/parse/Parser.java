@@ -50,7 +50,7 @@ public class Parser {
                         }
                         new DeadlineCommand(input[1]).execute(library, ui, storage);
                     } catch (DykeException e) {
-                        ui.printMessage(" " + e.getMessage());
+                        ui.printMessage(e.getMessage());
                     }
                     break;
 
@@ -62,7 +62,7 @@ public class Parser {
                         }
                         new TodoCommand(input[1]).execute(library, ui, storage);
                     } catch (DykeException e) {
-                        ui.printMessage(" " + e.getMessage());
+                        ui.printMessage(e.getMessage());
                     }
                     break;
 
@@ -73,7 +73,7 @@ public class Parser {
                         }
                         new EventCommand(input[1]).execute(library, ui, storage);
                     } catch (DykeException e) {
-                        ui.printMessage(" " + e.getMessage());
+                        ui.printMessage(e.getMessage());
                     }
                     break;
 

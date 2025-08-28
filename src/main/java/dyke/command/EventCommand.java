@@ -35,7 +35,7 @@ public class EventCommand extends Command {
         // Checking if From day-time given
         if (fromSplit.length != 2) {
             throw new DykeException("You know, I kinda gotta know when it's gonna happen." +
-                    "\t format: /from *day-time* /to *day-time*");
+                    "\n\t format: /from *day-time* /to *day-time*");
         }
         String[] toSplit = fromSplit[1].split("/to", 2);
         String from = toSplit[0].trim();
@@ -43,7 +43,7 @@ public class EventCommand extends Command {
         // Checking if To day-time given
         if (toSplit.length != 2) {
             throw new DykeException("You know, I kinda gotta know when it's gonna happen." +
-                    "\t format: /from *day-time* /to *day-time*");
+                    "\n\t format: /from *day-time* /to *day-time*");
         }
 
         String to = (toSplit.length > 1) ? toSplit[1].trim() : "";

@@ -21,7 +21,7 @@ public class Library {
                 "\t" + task.toString();
         library.add(task);
         int size = library.size();
-        return res + String.format("\n There %s %d %s in the dyke.data.Library.%n",
+        return res + String.format("\n There %s %d %s in the Library.",
                 (size > 1 ? "are" : "is"),
                 size,
                 "task" + (size > 1 ? "s" : ""));
