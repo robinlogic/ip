@@ -10,6 +10,7 @@ public enum CommandType {
     DELETE("DELETE"),
     UNKNOWN("UNKNOWN"),
     HELP("HELP"),
+    FIND("FIND"),
     WHAT("WHAT?");
 
     private final String keyword;

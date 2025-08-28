@@ -98,6 +98,9 @@ public class Parser {
                     break;
                 case WHAT:
                     new WhatCommand().execute(library, ui, storage);
+                    break;
+                case FIND:
+                    new FindCommand(input[1]).execute(library, ui, storage);
             }
         } catch (DykeException e) {
             ui.printMessage(e.getMessage() + "\n Dude, IDK whats that??" +
