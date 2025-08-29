@@ -11,7 +11,9 @@ import java.io.*;
 
 import java.util.ArrayList;
 
-
+/**
+ * Houses methods to access and modify "dyke.txt" for saving in disk.
+ */
 public class Storage {
     private final String filePath;
     private ArrayList<Task> library;

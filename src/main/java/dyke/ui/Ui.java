@@ -4,6 +4,11 @@ public class Ui {
     private final String BAR = "\t______________________" +
             "________________________" +
             "______________";
+
+    /**
+     * Prints message with stylization
+     * @param message Message from other Classes
+     */
     public void printMessage(String message) {
         String[] sep = message.split("\n");
         System.out.println(BAR);
@@ -13,6 +18,10 @@ public class Ui {
         System.out.println(BAR);
     }
 
+    /**
+     * Prints message without stylization
+     * @param message
+     */
     public void printMessageNoBar(String message) {
         String[] sep = message.split("\n");
         for (String s : sep) {
@@ -20,6 +29,9 @@ public class Ui {
         }
     }
 
+    /**
+     * Prints welcome message
+     */
     public void welcomeMessage() {
         String welcome = "\n Hello! I'm DYKE\n" +
                 " What can I do for you?\n\n" +

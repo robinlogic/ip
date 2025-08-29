@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Provides methods to parse datetime from recognized formats
+ */
 public class DateTimeParser {
 
     private static final DateTimeFormatter DATE_ONLY =

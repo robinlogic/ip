@@ -5,9 +5,16 @@ import dyke.parse.CommandType;
 import dyke.parse.Storage;
 import dyke.ui.Ui;
 
+/**
+ * Contains methods for the commands recognized by DYKE
+ */
 public abstract class Command {
     protected CommandType command;
 
+    /**
+     * Creates {@code Command} object
+     * @param command Valid {@code CommandType}
+     */
     public Command(CommandType command) {
         this.command = command;
     }

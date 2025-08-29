@@ -1,9 +1,16 @@
 package dyke.tasks;
 
+/**
+ * Houses methods for the Tasks recognized by DYKE.
+ */
 public class Task {
     protected String description;
     protected boolean done;
 
+    /**
+     * Creates a {@code Task} object
+     * @param desc Description of {@code Task}
+     */
     public Task(String desc) {
         this.description = desc;
         this.done = false;

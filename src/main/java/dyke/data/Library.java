@@ -4,6 +4,9 @@ import dyke.tasks.Task;
 
 import java.util.ArrayList;
 
+/**
+ * Houses methods for manipulating Tasks inside the Library
+ */
 public class Library {
     private ArrayList<Task> library;
 

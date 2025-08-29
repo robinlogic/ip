@@ -6,6 +6,7 @@ import dyke.parse.Storage;
 
 import java.util.Scanner;
 
+// Contains Main method to run DYKE
 public class Dyke {
     static Library library = new Library();
 

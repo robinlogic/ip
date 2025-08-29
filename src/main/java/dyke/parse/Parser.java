@@ -4,6 +4,9 @@ import dyke.command.*;
 import dyke.data.Library;
 import dyke.ui.Ui;
 
+/**
+ * Houses methods for parsing inputs from User
+ */
 public class Parser {
     private static final int ACCOUNT_INDEX = 1;
     private boolean isRunning = true;

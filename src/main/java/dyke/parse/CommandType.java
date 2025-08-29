@@ -1,5 +1,8 @@
 package dyke.parse;
 
+/**
+ * Provides a list of recognized commands
+ */
 public enum CommandType {
     TODO("TODO"),
     DEADLINE("DEADLINE"),
