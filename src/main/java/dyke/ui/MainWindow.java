@@ -22,9 +22,9 @@ public class MainWindow extends AnchorPane {
 
     private Dyke dyke;
 
-    private Image userImage =
+    private Image USER_IMAGE =
             new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image dukeImage =
+    private Image DYKE_IMAGE =
             new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
     @FXML
@@ -33,8 +33,20 @@ public class MainWindow extends AnchorPane {
     }
 
     /** Injects the Duke instance */
-    public void setDuke(Dyke d) {
+    public void setDyke(Dyke d) {
         dyke = d;
+
+        // Show welcome message immediately
+        dialogContainer.getChildren().add(DialogBox.getDykeDialog(
+                dyke.welcome(), DYKE_IMAGE));
+
+        // Load tasks and show info
+        String loadMessage = dyke.init();
+        dialogContainer.getChildren().add(DialogBox.getDykeDialog(loadMessage, DYKE_IMAGE));
+
+        // Scroll to bottom
+        //scrollPane.setVvalue(1.0);
+
     }
 
     /**
@@ -46,8 +58,8 @@ public class MainWindow extends AnchorPane {
         String input = userInput.getText();
         String response = dyke.getResponse(input);
         dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDykeDialog(response, dukeImage)
+                DialogBox.getUserDialog(input, USER_IMAGE),
+                DialogBox.getDykeDialog(response, DYKE_IMAGE)
         );
         userInput.clear();
     }

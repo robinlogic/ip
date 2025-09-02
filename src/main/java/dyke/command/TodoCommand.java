@@ -16,11 +16,14 @@ public class TodoCommand extends Command {
     }
 
     @Override
-    public void execute(Library library, Ui ui, Storage storage) {
+    public String execute(Library library, Ui ui, Storage storage) {
         try {
-            ui.printMessage(handleTodo(desc, library));
+            String msg = handleTodo(desc, library);
+            ui.printMessage(msg);
+            return msg;
         } catch (DykeException e) {
             ui.printMessage(e.getMessage());
+            return e.getMessage();
         }
     }
 

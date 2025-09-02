@@ -32,7 +32,7 @@ public class Parser {
      * Parses commands from User.
      * @param input The inputs from User
      */
-    public void parseCommand(String[] input) {
+    public String parseCommand(String[] input) {
         try {
             CommandType command = CommandType.fromString(input[0]);
 
@@ -40,30 +40,26 @@ public class Parser {
 
             case BYE:
                 ByeCommand bye  = new ByeCommand();
-                bye.execute(library, ui, storage);
                 this.isRunning = false;
-                break;
+                return bye.execute(library, ui, storage);
             case LIST:
-                new ListCommand().execute(library, ui, storage);
-                break;
+                return new ListCommand().execute(library, ui, storage);
             case HELP:
-                new HelpCommand().execute(library, ui, storage);
-                break;
+                return new HelpCommand().execute(library, ui, storage);
             case MARK:
-                new MarkCommand(Integer.parseInt(input[1]) - ACCOUNT_INDEX)
+                return new MarkCommand(Integer.parseInt(input[1]) - ACCOUNT_INDEX)
                     .execute(library, ui, storage);
-                break;
             case DEADLINE:
                 try {
                     if (input.length < 2) {
                         throw new DykeException("I think you forgot the" +
                                 " description...");
                     }
-                    new DeadlineCommand(input[1]).execute(library, ui, storage);
+                    return new DeadlineCommand(input[1]).execute(library, ui, storage);
                 } catch (DykeException e) {
                     ui.printMessage(e.getMessage());
+                    return e.getMessage();
                 }
-                break;
 
             case TODO:
                 try {
@@ -71,43 +67,48 @@ public class Parser {
                         throw new DykeException("Phineas, I don't know what " +
                                 "we're gonna do today!");
                     }
-                    new TodoCommand(input[1]).execute(library, ui, storage);
+                    return new TodoCommand(input[1]).execute(library, ui, storage);
                 } catch (DykeException e) {
                     ui.printMessage(e.getMessage());
+                    return e.getMessage();
                 }
-                break;
 
             case EVENT:
                 try {
                     if (input.length < 2) {
                         throw new DykeException("What is this event about?");
                     }
-                    new EventCommand(input[1]).execute(library, ui, storage);
+                    return new EventCommand(input[1]).execute(library, ui, storage);
                 } catch (DykeException e) {
                     ui.printMessage(e.getMessage());
+                    return e.getMessage();
                 }
-                break;
 
             case DELETE:
                 try {
                     if (input.length < 2) {
                         throw new DykeException("What do you wanna delete?");
                     }
-                    new DeleteCommand(Integer.parseInt(input[1]))
+                    return new DeleteCommand(Integer.parseInt(input[1]))
                         .execute(library, ui, storage);
                 } catch (DykeException e) {
                     System.out.println("\t " + e.getMessage() + "\n");
+                    return e.getMessage();
                 }
-                break;
             case WHAT:
-                new WhatCommand().execute(library, ui, storage);
+                return new WhatCommand().execute(library, ui, storage);
             case FIND:
-                new FindCommand(input[1]).execute(library, ui, storage);
+                return new FindCommand(input[1]).execute(library, ui, storage);
             }
         } catch (DykeException e) {
-            ui.printMessage(e.getMessage() + "\n Dude, IDK whats that??" +
+            String msg = e.getMessage() + "\n Dude, IDK whats that??" +
                     " type 'help' for help, bruv.\n" +
-                    " Or you could just say, 'Bye!', like exactly.");
+                    " Or you could just say, 'Bye!', like exactly.";
+            ui.printMessage(msg);
+            return msg;
         }
+        return "\n Dude, IDK whats that??" +
+                " type 'help' for help, bruv.\n" +
+                " Or you could just say, 'Bye!', like exactly.";
     }
 }
