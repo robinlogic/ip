@@ -21,7 +21,7 @@ public class Parser {
     }
 
     /**
-     * Asserts if "Bye!" command has been invoked.
+     * Asserts that "Bye!" command has been invoked.
      * @return {@code boolean}
      */
     public boolean isRunning() {
