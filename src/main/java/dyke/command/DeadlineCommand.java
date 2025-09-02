@@ -15,11 +15,14 @@ public class DeadlineCommand extends Command {
     }
 
     @Override
-    public void execute(Library library, Ui ui, Storage storage) {
+    public String execute(Library library, Ui ui, Storage storage) {
         try {
-            ui.printMessage(handleDeadline(library));
+            String msg = handleDeadline(library);
+            ui.printMessage(msg);
+            return msg;
         } catch (DykeException e) {
             ui.printMessage(e.getMessage());
+            return e.getMessage();
         }
     }
 

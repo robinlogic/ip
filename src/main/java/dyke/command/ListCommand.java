@@ -11,7 +11,9 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public void execute(Library library, Ui ui, Storage storage) {
-        ui.printMessage(library.printList());
+    public String execute(Library library, Ui ui, Storage storage) {
+        String msg = library.printList();
+        ui.printMessage(msg);
+        return msg;
     }
 }

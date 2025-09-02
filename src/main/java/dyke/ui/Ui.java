@@ -30,13 +30,15 @@ public class Ui {
     }
 
     /**
-     * Prints welcome message
+     * Prints and returns welcome message
+     * @return Welcome message
      */
-    public void welcomeMessage() {
+    public String welcomeMessage() {
         String welcome = "\n Hello! I'm DYKE\n" +
                 " What can I do for you?\n\n" +
                 "\t\t\t\t\t\t\tpsst! type 'help' for help, duh.";
         this.printMessage(welcome);
+        return welcome;
     }
 
 }

@@ -13,7 +13,9 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(Library library, Ui ui, Storage storage) {
-        ui.printMessage(library.markTask(this.index));
+    public String execute(Library library, Ui ui, Storage storage) {
+        String msg = library.markTask(this.index);
+        ui.printMessage(msg);
+        return msg;
     }
 }

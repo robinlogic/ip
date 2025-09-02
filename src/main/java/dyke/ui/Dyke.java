@@ -9,9 +9,31 @@ import java.util.Scanner;
 // Contains Main method to run DYKE
 public class Dyke {
     static Library library = new Library();
+    private Storage storage;
+    private Parser parser;
+    private Ui ui;
 
     // file location for saved tasks
     static String FILE_PATH = "./data/dyke.txt";
+
+    public Dyke() {
+        this.storage = new Storage(FILE_PATH);
+        this.ui = new Ui();
+        this.parser = new Parser(library, ui, storage);
+    }
+
+    private String run(String input) {
+        String[] commands = input.split(" ", 2);
+        return parser.parseCommand(commands);
+    }
+
+    public String welcome() {
+        return ui.welcomeMessage();
+    }
+
+    public String init() {
+        return storage.loadTasks(library);
+    }
 
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
@@ -44,5 +66,12 @@ public class Dyke {
             ui.printMessageNoBar(storage.saveTasks(library));
         }
         sc.close();
+    }
+
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        return this.run(input);
     }
 }
