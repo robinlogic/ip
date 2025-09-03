@@ -8,7 +8,7 @@ import dyke.tasks.Task;
 import dyke.ui.Ui;
 
 public class FindCommand extends Command {
-    private String keyword;
+    private final String keyword;
     public FindCommand(String keyword) {
         super(CommandType.FIND);
         this.keyword = keyword;
