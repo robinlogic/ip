@@ -12,6 +12,7 @@ public class Dyke {
     private Storage storage;
     private Parser parser;
     private Ui ui;
+    private boolean isRunning;
 
     // file location for saved tasks
     static String FILE_PATH = "./data/dyke.txt";
@@ -20,21 +21,44 @@ public class Dyke {
         this.storage = new Storage(FILE_PATH);
         this.ui = new Ui();
         this.parser = new Parser(library, ui, storage);
+        this.isRunning = true;
     }
 
     private String run(String input) {
         String[] commands = input.split(" ", 2);
-        return parser.parseCommand(commands);
+        String msg = parser.parseCommand(commands);
+        this.isRunning = parser.isRunning();
+        return msg;
     }
 
+    /**
+     * Passes a welcome message for GUI to show
+     * @return String message
+     */
     public String welcome() {
         return ui.welcomeMessage();
     }
 
+    /**
+     * Initialises Dyke by loading in any saved tasks.
+     * @return String message for loading status
+     */
     public String init() {
         return storage.loadTasks(library);
     }
 
+    /**
+     * Asserts if exit command has not been given.
+     * @return boolean
+     */
+    public boolean isRunning() {
+        return isRunning;
+    }
+
+    /**
+     * Main method for running Dyke in CLI
+     * @param args User inputs
+     */
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         Ui ui = new Ui(); // User Interface class

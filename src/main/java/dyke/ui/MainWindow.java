@@ -1,5 +1,7 @@
 package dyke.ui;
 
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -7,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
+
 /**
  * Controller for the main GUI.
  */
@@ -32,7 +36,9 @@ public class MainWindow extends AnchorPane {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
-    /** Injects the Duke instance */
+    /**
+     * Injects the Duke instance
+     */
     public void setDyke(Dyke d) {
         dyke = d;
 
@@ -62,5 +68,11 @@ public class MainWindow extends AnchorPane {
                 DialogBox.getDykeDialog(response, DYKE_IMAGE)
         );
         userInput.clear();
+
+        if (!dyke.isRunning()) {// Closes Stage when exit command is given
+            PauseTransition pauseTransition = new PauseTransition(Duration.seconds(3));
+            pauseTransition.setOnFinished(event -> Platform.exit());
+            pauseTransition.play();
+        }
     }
 }

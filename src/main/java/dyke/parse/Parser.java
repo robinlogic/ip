@@ -89,7 +89,7 @@ public class Parser {
                     if (input.length < 2) {
                         throw new DykeException("What do you wanna delete?");
                     }
-                    return new DeleteCommand(Integer.parseInt(input[1]))
+                    return new DeleteCommand(Integer.parseInt(input[1]) - ACCOUNT_INDEX)
                         .execute(library, ui, storage);
                 } catch (DykeException e) {
                     System.out.println("\t " + e.getMessage() + "\n");

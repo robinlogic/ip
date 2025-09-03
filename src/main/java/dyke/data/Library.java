@@ -86,7 +86,7 @@ public class Library {
 
         Task task = this.getTask(index);
         library.remove(index);
-        return "As you wish... Begone dyke.tasks.Task!:" +
+        return "As you wish... Begone Task!:" +
             "\n\t" + task + "\nNow you have " + this.size() + " tasks.";
 
     }
