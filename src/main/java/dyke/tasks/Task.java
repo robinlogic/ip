@@ -5,7 +5,7 @@ package dyke.tasks;
  */
 public class Task {
     protected String description;
-    protected boolean done;
+    protected boolean isDone;
 
     /**
      * Creates a {@code Task} object
@@ -13,7 +13,7 @@ public class Task {
      */
     public Task(String desc) {
         this.description = desc;
-        this.done = false;
+        this.isDone = false;
     }
 
     /**
@@ -21,7 +21,7 @@ public class Task {
      * @return {@code Task}
      */
     public Task isDone() {
-        this.done = true;
+        this.isDone = true;
         return this;
     }
 
@@ -34,7 +34,7 @@ public class Task {
      * @return The message after {@code encode} operation.
      */
     public String encode() {
-        return (done ? "1" : "0") + " | " + this.description;
+        return (isDone ? "1" : "0") + " | " + this.description;
     }
 
     /**
@@ -43,6 +43,6 @@ public class Task {
      */
     @Override
     public String toString() {
-        return (done ? "[X] " : "[ ] ") + this.description;
+        return (isDone ? "[X] " : "[ ] ") + this.description;
     }
 }
