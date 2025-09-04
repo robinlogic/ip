@@ -1,15 +1,18 @@
 package dyke.parse;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import dyke.data.Library;
 import dyke.tasks.Deadline;
 import dyke.tasks.Event;
 import dyke.tasks.Task;
 import dyke.tasks.Todo;
-
-import java.io.*;
-
-
-import java.util.ArrayList;
 
 /**
  * Houses methods to access and modify "dyke.txt" for saving in disk.
@@ -75,7 +78,7 @@ public class Storage {
     }
 
     // Decoder for decoding dyke.data from saved file
-    private Task decode(String line) throws DykeException{
+    private Task decode(String line) throws DykeException {
         String[] parts = line.split(" \\| ");
         String type = parts[0];
 
@@ -89,14 +92,14 @@ public class Storage {
             break;
         case "D":
             if (parts.length == 4) {
-                return isDone ? new Deadline(parts[2], parts[3]).isDone() :
-                        new Deadline(parts[2], parts[3]);
+                return isDone ? new Deadline(parts[2], parts[3]).isDone()
+                        : new Deadline(parts[2], parts[3]);
             }
             break;
         case "E":
             if (parts.length == 5) {
-                return isDone ? new Event(parts[2], parts[3], parts[4]) :
-                        new Event(parts[2], parts[3], parts[4]).isDone();
+                return isDone ? new Event(parts[2], parts[3], parts[4])
+                        : new Event(parts[2], parts[3], parts[4]).isDone();
             }
             break;
         default:

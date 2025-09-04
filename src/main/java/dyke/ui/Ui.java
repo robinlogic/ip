@@ -1,9 +1,12 @@
 package dyke.ui;
 
+/**
+ * Houses methods for printing messages to CLI
+ */
 public class Ui {
-    private final String BAR = "\t______________________" +
-            "________________________" +
-            "______________";
+    private static final String BAR = "\t______________________"
+            + "________________________"
+            + "______________";
 
     /**
      * Prints message with stylization
@@ -34,9 +37,9 @@ public class Ui {
      * @return Welcome message
      */
     public String welcomeMessage() {
-        String welcome = "\n Hello! I'm DYKE\n" +
-                " What can I do for you?\n\n" +
-                "\t\t\t\t\t\t\tpsst! type 'help' for help, duh.";
+        String welcome = "\n Hello! I'm DYKE\n"
+                + " What can I do for you?\n\n"
+                + "\t\t\t\t\t\t\tpsst! type 'help' for help, duh.";
         this.printMessage(welcome);
         return welcome;
     }

@@ -34,7 +34,7 @@ public class Task {
      * @return The message after {@code encode} operation.
      */
     public String encode() {
-        return (done ? "1" : "0") + " | "  + this.description;
+        return (done ? "1" : "0") + " | " + this.description;
     }
 
     /**

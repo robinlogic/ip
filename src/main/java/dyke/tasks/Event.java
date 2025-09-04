@@ -3,6 +3,9 @@ package dyke.tasks;
 import dyke.parse.DateTimeParser;
 import dyke.parse.DykeException;
 
+/**
+ * Houses methods for {@code Event} task.
+ */
 public class Event extends Task {
     private DateTimeParser from;
     private DateTimeParser to;

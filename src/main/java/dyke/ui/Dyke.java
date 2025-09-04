@@ -1,22 +1,27 @@
 package dyke.ui;
 
+import java.util.Scanner;
+
 import dyke.data.Library;
 import dyke.parse.Parser;
 import dyke.parse.Storage;
 
-import java.util.Scanner;
 
-// Contains Main method to run DYKE
+/**
+ * Contains Main method to run DYKE
+ */
 public class Dyke {
-    static Library library = new Library();
+    private static Library library = new Library();
+    // file location for saved tasks
+    private static final String FILE_PATH = "./data/dyke.txt";
     private Storage storage;
     private Parser parser;
     private Ui ui;
     private boolean isRunning;
 
-    // file location for saved tasks
-    static String FILE_PATH = "./data/dyke.txt";
-
+    /**
+     * Creates the Dyke program
+     */
     public Dyke() {
         this.storage = new Storage(FILE_PATH);
         this.ui = new Ui();
@@ -59,7 +64,7 @@ public class Dyke {
      * Main method for running Dyke in CLI
      * @param args User inputs
      */
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Ui ui = new Ui(); // User Interface class
 

@@ -38,19 +38,22 @@ public class DateTimeParser {
             // if it's just a date
             LocalDate date = LocalDate.parse(input, DATE_ONLY);
             return new DateTimeParser(date.atStartOfDay(), DATE_ONLY);
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+            // Intentionally ignored: input did not match the format
+        }
 
-        for (DateTimeFormatter fmt :
-                new DateTimeFormatter[]{DATE_HH_MM_SS, DATE_HH_MM, DATE_HH}) {
+        for (DateTimeFormatter fmt
+                : new DateTimeFormatter[]{DATE_HH_MM_SS, DATE_HH_MM, DATE_HH}) {
             try {
                 return new DateTimeParser(LocalDateTime.parse(input, fmt), fmt);
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+                // Intentionally ignored: input did not match the format
+            }
         }
         throw new DykeException("Invalid datetime: " + input);
     }
 
     /**
-     *
      * @return Date-time in an appropriate format.
      */
     public String reString() {

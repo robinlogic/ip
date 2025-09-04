@@ -7,8 +7,16 @@ import dyke.parse.Storage;
 import dyke.tasks.Task;
 import dyke.ui.Ui;
 
+/**
+ * Houses methods for {@code FindCommand}
+ */
 public class FindCommand extends Command {
     private final String keyword;
+
+    /**
+     * Creates {@code FindCommand}
+     * @param keyword Keywords for searching in the {@code Library}
+     */
     public FindCommand(String keyword) {
         super(CommandType.FIND);
         this.keyword = keyword;
@@ -37,7 +45,7 @@ public class FindCommand extends Command {
             }
         }
         int size = findLibrary.size();
-        return size > 0 ? findLibrary.printList() :
-                "There are no tasks with the keyword: " + keyword;
+        return size > 0 ? findLibrary.printList()
+                : "There are no tasks with the keyword: " + keyword;
     }
 }

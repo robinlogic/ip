@@ -22,7 +22,7 @@ public class Main extends Application {
             Scene scene = new Scene(ap);
             stage.setScene(scene);
             MainWindow controller = fxmlLoader.<MainWindow>getController();
-            controller.setDyke(dyke);  // inject the Duke instance
+            controller.setDyke(dyke); // inject the Duke instance
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

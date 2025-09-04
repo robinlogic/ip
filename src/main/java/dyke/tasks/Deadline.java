@@ -3,6 +3,9 @@ package dyke.tasks;
 import dyke.parse.DateTimeParser;
 import dyke.parse.DykeException;
 
+/**
+ * Houses methods for {@code Deadline} task
+ */
 public class Deadline extends Task {
     private DateTimeParser deadline;
 

@@ -7,8 +7,16 @@ import dyke.parse.Storage;
 import dyke.tasks.Todo;
 import dyke.ui.Ui;
 
+/**
+ * Houses methods for {@code TodoCommand}
+ */
 public class TodoCommand extends Command {
     private final String desc;
+
+    /**
+     * Creates {@code TodoCommand}
+     * @param desc Description of the task
+     */
     public TodoCommand(String desc) {
         super(CommandType.TODO);
         this.desc = desc;

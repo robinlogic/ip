@@ -1,12 +1,14 @@
 package dyke.data;
 
-import dyke.tasks.Task;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
+
+import dyke.tasks.Task;
+
+
 public class LibraryTest {
-    Library library = new Library();
+    private Library library = new Library();
 
     @Test
     public void testAddDelete() {
@@ -15,8 +17,8 @@ public class LibraryTest {
         String s = library.addTask(tasks[0]);
         assertEquals(1, library.size());
 
-        String res = " Great! I'm keeping track :D:\n" +
-                "\t" + tasks[0].toString() + "\n There is 1 task in the Library.";
+        String res = " Great! I'm keeping track :D: \n"
+                + "\t" + tasks[0].toString() + "\n There is 1 task in the Library.";
         assertEquals(res , s);
 
 

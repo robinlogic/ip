@@ -1,5 +1,8 @@
 package dyke.tasks;
 
+/**
+ * Houses methods for {@code Todo} task.
+ */
 public class Todo extends Task {
     /**
      * Creates a {@code Todo} task.

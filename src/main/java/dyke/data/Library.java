@@ -1,8 +1,8 @@
 package dyke.data;
 
-import dyke.tasks.Task;
-
 import java.util.ArrayList;
+
+import dyke.tasks.Task;
 
 /**
  * Houses methods for manipulating Tasks inside the Library
@@ -25,12 +25,12 @@ public class Library {
      */
     public String addTask(Task task) {
 
-        String res = " Great! I'm keeping track :D:\n" +
-                "\t" + task.toString();
+        String res = " Great! I'm keeping track :D:\n"
+                + "\t" + task.toString();
         library.add(task);
         int size = library.size();
-        return res + String.format("\n There %s %d %s in the Library.",
-                (size > 1 ? "are" : "is"),
+        return res + String.format("\n There %s %d %s in the Library.", (
+                size > 1 ? "are" : "is"),
                 size,
                 "task" + (size > 1 ? "s" : ""));
 
@@ -53,7 +53,7 @@ public class Library {
         return this.library;
     }
 
-    private Task getTask(int index){
+    private Task getTask(int index) {
         return this.library.get(index);
     }
 
@@ -62,15 +62,14 @@ public class Library {
      * @param index Task number; non-zero indexing.
      * @return The message after the markTask operation.
      */
-    public String markTask(int index){
+    public String markTask(int index) {
         if (index < 0 || index >= this.library.size()) {
             return "Hey... That doesn't exist!";
-        }
-        else {
+        } else {
             Task task = this.getTask(index).isDone();
             this.library.set(index, task);
-            return "Nice Work! I have marked this task as done:" +
-                    "\n" + (index + 1) + ". " + task;
+            return "Nice Work! I have marked this task as done:"
+                    + "\n" + (index + 1) + ". " + task;
         }
     }
 
@@ -79,15 +78,15 @@ public class Library {
      * @param index Task number; non-zero indexing.
      * @return The message after the deleteTask operation.
      */
-    public String deleteTask(int index){
+    public String deleteTask(int index) {
         if (index < 0 || index >= this.library.size()) {
             return "Hey... That doesn't exist!";
         }
 
         Task task = this.getTask(index);
         library.remove(index);
-        return "As you wish... Begone Task!:" +
-            "\n\t" + task + "\nNow you have " + this.size() + " tasks.";
+        return "As you wish... Begone Task!:"
+                + "\n\t" + task + "\nNow you have " + this.size() + " tasks.";
 
     }
 
@@ -108,7 +107,6 @@ public class Library {
     }
 
     /**
-     *
      * @return A view of the Library in a readable format.
      */
     public String printList() {

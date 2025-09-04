@@ -26,9 +26,9 @@ public class MainWindow extends AnchorPane {
 
     private Dyke dyke;
 
-    private Image USER_IMAGE =
+    private Image userImage =
             new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image DYKE_IMAGE =
+    private Image dykeImage =
             new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
     @FXML
@@ -44,14 +44,11 @@ public class MainWindow extends AnchorPane {
 
         // Show welcome message immediately
         dialogContainer.getChildren().add(DialogBox.getDykeDialog(
-                dyke.welcome(), DYKE_IMAGE));
+                dyke.welcome(), dykeImage));
 
         // Load tasks and show info
         String loadMessage = dyke.init();
-        dialogContainer.getChildren().add(DialogBox.getDykeDialog(loadMessage, DYKE_IMAGE));
-
-        // Scroll to bottom
-        //scrollPane.setVvalue(1.0);
+        dialogContainer.getChildren().add(DialogBox.getDykeDialog(loadMessage, dykeImage));
 
     }
 
@@ -64,12 +61,12 @@ public class MainWindow extends AnchorPane {
         String input = userInput.getText();
         String response = dyke.getResponse(input);
         dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, USER_IMAGE),
-                DialogBox.getDykeDialog(response, DYKE_IMAGE)
+                DialogBox.getUserDialog(input, userImage),
+                DialogBox.getDykeDialog(response, dykeImage)
         );
         userInput.clear();
 
-        if (!dyke.isRunning()) {// Closes Stage when exit command is given
+        if (!dyke.isRunning()) { // Closes Stage when exit command is given
             PauseTransition pauseTransition = new PauseTransition(Duration.seconds(3));
             pauseTransition.setOnFinished(event -> Platform.exit());
             pauseTransition.play();

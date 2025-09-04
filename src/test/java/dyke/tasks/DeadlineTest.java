@@ -1,10 +1,11 @@
 package dyke.tasks;
 
-import dyke.parse.DykeException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import dyke.parse.DykeException;
 
 public class DeadlineTest {
     private Deadline task;
@@ -15,13 +16,13 @@ public class DeadlineTest {
                 "running this test", "2025-08-25");
     }
     @Test
-    public void deadlineString(){
+    public void deadlineString() {
         assertEquals(
                 "[D] [ ] running this test (by: 2025-08-25)", task.toString());
     }
 
     @Test
-    public void deadlineEncode(){
+    public void deadlineEncode() {
         assertEquals("D | 0 | running this test | 2025-08-25", task.encode());
     }
 }

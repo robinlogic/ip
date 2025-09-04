@@ -7,8 +7,16 @@ import dyke.parse.Storage;
 import dyke.tasks.Event;
 import dyke.ui.Ui;
 
+/**
+ * Houses methods for {@code EventCommand}
+ */
 public class EventCommand extends Command {
     private final String desc;
+
+    /**
+     * Creates {@code EventCommand}
+     * @param desc Description of the event
+     */
     public EventCommand(String desc) {
         super(CommandType.EVENT);
         this.desc = desc;
@@ -37,16 +45,16 @@ public class EventCommand extends Command {
 
         // Checking if From day-time given
         if (fromSplit.length != 2) {
-            throw new DykeException("You know, I kinda gotta know when it's gonna happen." +
-                    "\n\t format: /from *day-time* /to *day-time*");
+            throw new DykeException("You know, I kinda gotta know when it's gonna happen."
+                    + "\n\t format: /from *day-time* /to *day-time*");
         }
         String[] toSplit = fromSplit[1].split("/to", 2);
         String from = toSplit[0].trim();
 
         // Checking if To day-time given
         if (toSplit.length != 2) {
-            throw new DykeException("You know, I kinda gotta know when it's gonna happen." +
-                    "\n\t format: /from *day-time* /to *day-time*");
+            throw new DykeException("You know, I kinda gotta know when it's gonna happen."
+                    + "\n\t format: /from *day-time* /to *day-time*");
         }
 
         String to = (toSplit.length > 1) ? toSplit[1].trim() : "";

@@ -5,9 +5,17 @@ import dyke.parse.CommandType;
 import dyke.parse.Storage;
 import dyke.ui.Ui;
 
-public class DeleteCommand  extends Command {
+/**
+ * Houses methods for {@code DeleteCommand}
+ */
+public class DeleteCommand extends Command {
     private final int index;
-    public DeleteCommand(int index){
+
+    /**
+     * Creates {@code DeleteCommand}
+     * @param index {@code Task} number
+     */
+    public DeleteCommand(int index) {
         super(CommandType.DELETE);
         this.index = index;
     }

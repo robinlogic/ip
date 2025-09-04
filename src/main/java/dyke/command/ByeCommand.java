@@ -5,6 +5,9 @@ import dyke.parse.CommandType;
 import dyke.parse.Storage;
 import dyke.ui.Ui;
 
+/**
+ * Houses methods for {@code ByeCommand}
+ */
 public class ByeCommand extends Command {
     public ByeCommand() {
         super(CommandType.BYE);

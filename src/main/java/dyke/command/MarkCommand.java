@@ -5,8 +5,16 @@ import dyke.parse.CommandType;
 import dyke.parse.Storage;
 import dyke.ui.Ui;
 
+/**
+ * Houses methods for {@code MarkCommand}
+ */
 public class MarkCommand extends Command {
     private final int index;
+
+    /**
+     * Creates {@code MarkCommand}
+     * @param index {@code Task} number
+     */
     public MarkCommand(int index) {
         super(CommandType.MARK);
         this.index = index;

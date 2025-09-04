@@ -5,6 +5,9 @@ import dyke.parse.CommandType;
 import dyke.parse.Storage;
 import dyke.ui.Ui;
 
+/**
+ * Houses methods for {@code ListCommand}
+ */
 public class ListCommand extends Command {
     public ListCommand() {
         super(CommandType.LIST);

@@ -1,7 +1,6 @@
 package dyke.ui;
 
 import java.io.IOException;
-import java.util.Collections;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +13,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
-
+/**
+ * Houses methods for creating the dialog boxes in GUI.
+ */
 public class DialogBox extends HBox {
 
     @FXML

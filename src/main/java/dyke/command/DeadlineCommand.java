@@ -7,8 +7,16 @@ import dyke.parse.Storage;
 import dyke.tasks.Deadline;
 import dyke.ui.Ui;
 
+/**
+ * Houses methods for {@code DeadlineCommand}
+ */
 public class DeadlineCommand extends Command {
     private final String desc;
+
+    /**
+     * Creates {@code DeadlineCommand}
+     * @param desc Description of task
+     */
     public DeadlineCommand(String desc) {
         super(CommandType.DEADLINE);
         this.desc = desc;
@@ -42,7 +50,7 @@ public class DeadlineCommand extends Command {
         String activity = parts[0].trim();
         String by = parts[1].trim();
 
-        Deadline deadline  =  new Deadline(activity, by);
+        Deadline deadline = new Deadline(activity, by);
         return library.addTask(deadline);
     }
 }
