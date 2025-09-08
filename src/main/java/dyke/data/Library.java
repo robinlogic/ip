@@ -54,6 +54,7 @@ public class Library {
     }
 
     private Task getTask(int index) {
+        assert index >= 0 && index < library.size();
         return this.library.get(index);
     }
 
