@@ -23,6 +23,7 @@ public class DateTimeParser {
 
 
     private DateTimeParser(LocalDateTime date, DateTimeFormatter fmt) {
+        assert date != null && fmt != null;
         this.date = date;
         this.format = fmt;
     }

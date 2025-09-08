@@ -59,8 +59,7 @@ public class Storage {
 
         if (!file.exists()) {
             return "No saved tasks found. Starting fresh!";
-        }
-        else {
+        } else {
             try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
