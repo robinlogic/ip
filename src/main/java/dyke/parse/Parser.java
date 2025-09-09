@@ -45,11 +45,11 @@ public class Parser {
 
     /**
      * Parses commands from User.
-     * @param input The inputs from User
+     * @param inputs The inputs from User
      */
-    public String parseCommand(String[] input) {
+    public String parseCommand(String[] inputs) {
         try {
-            CommandType command = CommandType.fromString(input[0]);
+            CommandType command = CommandType.fromString(inputs[0]);
 
             switch (command) {
 
@@ -62,58 +62,21 @@ public class Parser {
             case HELP:
                 return new HelpCommand().execute(library, ui, storage);
             case MARK:
-                return new MarkCommand(Integer.parseInt(input[1]) - ACCOUNT_INDEX)
+                return new MarkCommand(Integer.parseInt(inputs[1]) - ACCOUNT_INDEX)
                     .execute(library, ui, storage);
             case DEADLINE:
-                try {
-                    if (input.length < 2) {
-                        throw new DykeException("I think you forgot the"
-                                + " description...");
-                    }
-                    return new DeadlineCommand(input[1]).execute(library, ui, storage);
-                } catch (DykeException e) {
-                    ui.printMessage(e.getMessage());
-                    return e.getMessage();
-                }
-
+                return new DeadlineCommand(inputs).execute(library, ui, storage);
             case TODO:
-                try {
-                    if (input.length < 2) {
-                        throw new DykeException("Phineas, I don't know what "
-                                + "we're gonna do today!");
-                    }
-                    return new TodoCommand(input[1]).execute(library, ui, storage);
-                } catch (DykeException e) {
-                    ui.printMessage(e.getMessage());
-                    return e.getMessage();
-                }
-
+                return new TodoCommand(inputs).execute(library, ui, storage);
             case EVENT:
-                try {
-                    if (input.length < 2) {
-                        throw new DykeException("What is this event about?");
-                    }
-                    return new EventCommand(input[1]).execute(library, ui, storage);
-                } catch (DykeException e) {
-                    ui.printMessage(e.getMessage());
-                    return e.getMessage();
-                }
-
+                return new EventCommand(inputs).execute(library, ui, storage);
             case DELETE:
-                try {
-                    if (input.length < 2) {
-                        throw new DykeException("What do you wanna delete?");
-                    }
-                    return new DeleteCommand(Integer.parseInt(input[1]) - ACCOUNT_INDEX)
+                return new DeleteCommand(inputs)
                         .execute(library, ui, storage);
-                } catch (DykeException e) {
-                    System.out.println("\t " + e.getMessage() + "\n");
-                    return e.getMessage();
-                }
             case WHAT:
                 return new WhatCommand().execute(library, ui, storage);
             case FIND:
-                return new FindCommand(input[1]).execute(library, ui, storage);
+                return new FindCommand(inputs[1]).execute(library, ui, storage);
             default:
                 return "Dude, IDK whats that??"
                         + " type 'help' for help, bruv.\n"

@@ -11,15 +11,15 @@ import dyke.ui.Ui;
  * Houses methods for {@code DeadlineCommand}
  */
 public class DeadlineCommand extends Command {
-    private final String desc;
+    private final String[] inputs;
 
     /**
      * Creates {@code DeadlineCommand}
-     * @param desc Description of task
+     * @param inputs Inputs from User
      */
-    public DeadlineCommand(String desc) {
+    public DeadlineCommand(String[] inputs) {
         super(CommandType.DEADLINE);
-        this.desc = desc;
+        this.inputs = inputs;
     }
 
     @Override
@@ -35,12 +35,12 @@ public class DeadlineCommand extends Command {
     }
 
     private String handleDeadline(Library library) throws DykeException {
-        if (desc.isBlank()) {
+        if (inputs.length < 2) {
             throw new DykeException("I think you forgot the description...");
         }
 
         // Split input string with "/by"
-        String[] parts = desc.split("/by", 2);
+        String[] parts = inputs[1].split("/by", 2);
 
         // Checking if day-time is given
         if (parts.length != 2 || parts[1].isBlank()) {
