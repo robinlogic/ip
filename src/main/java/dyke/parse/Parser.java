@@ -8,6 +8,7 @@ import dyke.command.FindCommand;
 import dyke.command.HelpCommand;
 import dyke.command.ListCommand;
 import dyke.command.MarkCommand;
+import dyke.command.StatsCommand;
 import dyke.command.TodoCommand;
 import dyke.command.WhatCommand;
 import dyke.data.Library;
@@ -77,6 +78,8 @@ public class Parser {
                 return new WhatCommand().execute(library, ui, storage);
             case FIND:
                 return new FindCommand(inputs[1]).execute(library, ui, storage);
+            case STATS:
+                return new StatsCommand().execute(library, ui, storage);
             default:
                 return "Dude, IDK whats that??"
                         + " type 'help' for help, bruv.\n"

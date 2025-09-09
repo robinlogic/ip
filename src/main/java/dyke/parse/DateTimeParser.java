@@ -3,6 +3,7 @@ package dyke.parse;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Provides methods to parse datetime from recognized formats
@@ -78,6 +79,10 @@ public class DateTimeParser {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public long timeDifference(DateTimeParser end) {
+        return ChronoUnit.DAYS.between(this.date, end.date);
     }
 
     /**

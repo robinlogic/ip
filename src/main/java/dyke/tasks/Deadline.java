@@ -20,6 +20,10 @@ public class Deadline extends Task {
         this.deadline = DateTimeParser.parse(deadline);
     }
 
+    public DateTimeParser getDeadline() {
+        return deadline;
+    }
+
     @Override
     public String encode() {
         return "D | " + super.encode() + " | "

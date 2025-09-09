@@ -23,6 +23,18 @@ public class Event extends Task {
         this.to = DateTimeParser.parse(to);
     }
 
+    public DateTimeParser getFrom() {
+        return from;
+    }
+
+    public DateTimeParser getTo() {
+        return to;
+    }
+
+    public DateTimeParser[] getTime() {
+        return new DateTimeParser[]{from, to};
+    }
+
     @Override
     public String encode() {
         return "E | " + super.encode() + " | "

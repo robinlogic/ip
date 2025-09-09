@@ -14,7 +14,8 @@ public enum CommandType {
     UNKNOWN("UNKNOWN"),
     HELP("HELP"),
     FIND("FIND"),
-    WHAT("WHAT?");
+    WHAT("WHAT?"),
+    STATS("STATS");
 
     private final String keyword;
 
