@@ -11,15 +11,15 @@ import dyke.ui.Ui;
  * Houses methods for {@code EventCommand}
  */
 public class EventCommand extends Command {
-    private final String desc;
+    private final String[] inputs;
 
     /**
      * Creates {@code EventCommand}
-     * @param desc Description of the event
+     * @param inputs Inputs from User
      */
-    public EventCommand(String desc) {
+    public EventCommand(String[] inputs) {
         super(CommandType.EVENT);
-        this.desc = desc;
+        this.inputs = inputs;
     }
 
     @Override
@@ -35,12 +35,12 @@ public class EventCommand extends Command {
     }
 
     private String handleEvent(Library library) throws DykeException {
-        if (desc.isBlank()) {
+        if (inputs.length != 2) {
             throw new DykeException("What is this event about?");
         }
 
         // Split on /from to get dyke.tasks.Event and Period
-        String[] fromSplit = desc.split("/from", 2);
+        String[] fromSplit = inputs[1].split("/from", 2);
         String activity = fromSplit[0].trim();
 
         // Checking if From day-time given

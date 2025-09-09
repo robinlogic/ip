@@ -11,22 +11,22 @@ import dyke.ui.Ui;
  * Houses methods for {@code TodoCommand}
  */
 public class TodoCommand extends Command {
-    private final String desc;
+    private final String[] inputs;
 
     /**
      * Creates {@code TodoCommand}
-     * @param desc Description of the task
+     * @param inputs Inputs from User
      */
-    public TodoCommand(String desc) {
+    public TodoCommand(String[] inputs) {
         super(CommandType.TODO);
-        this.desc = desc;
+        this.inputs = inputs;
 
     }
 
     @Override
     public String execute(Library library, Ui ui, Storage storage) {
         try {
-            String msg = handleTodo(desc, library);
+            String msg = handleTodo(library);
             ui.printMessage(msg);
             return msg;
         } catch (DykeException e) {
@@ -35,11 +35,11 @@ public class TodoCommand extends Command {
         }
     }
 
-    private String handleTodo(String desc, Library library) throws DykeException {
-        if (desc.isBlank()) {
+    private String handleTodo(Library library) throws DykeException {
+        if (inputs.length < 2) {
             throw new DykeException("Phineas, I don't know what we gonna do today!");
         }
-        String description = desc.trim();
+        String description = inputs[1].trim();
         Todo todo = new Todo(description);
         return library.addTask(todo);
     }
