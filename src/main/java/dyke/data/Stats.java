@@ -37,9 +37,11 @@ public class Stats {
                 totalDuration += dates[0].timeDifference(dates[1]);
             }
         }
+        assert totalTasks >= 0;
         String format = "Events Stats: \n"
                 + "Number of Tasks: " + totalTasks + "\n"
-                + "Average duration of Events: " + totalDuration / totalTasks + "\n";
+                + "Average duration of Events: "
+                + (totalTasks > 0 ? totalDuration / totalTasks : 0) + "\n";
         return format;
     }
 
@@ -50,6 +52,7 @@ public class Stats {
                 totalTasks++;
             }
         }
+        assert totalTasks >= 0;
         String format = "Events Stats: \n"
                 + "Number of Tasks: " + totalTasks + "\n";
         return format;
@@ -62,6 +65,7 @@ public class Stats {
                 totalTasks++;
             }
         }
+        assert totalTasks >= 0;
         String format = "Events Stats: \n"
                 + "Number of Tasks: " + totalTasks + "\n";
         return format;
