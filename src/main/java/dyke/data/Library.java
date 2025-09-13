@@ -46,7 +46,7 @@ public class Library {
     }
 
     /**
-     * Getter method for tasks in Library
+     * Returns {@code Tasks} in the {@code Library}
      * @return Library
      */
     public ArrayList<Task> getTasks() {
@@ -100,8 +100,8 @@ public class Library {
     }
 
     /**
-     * Number of tasks in Library.
-     * @return int
+     * Returns number of tasks in Library.
+     * @return int Number of Tasks
      */
     public int size() {
         return this.library.size();

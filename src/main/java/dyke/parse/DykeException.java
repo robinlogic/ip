@@ -5,7 +5,7 @@ package dyke.parse;
  */
 public class DykeException extends Exception {
     /**
-     * Handler for catching {@code DykeException}
+     * Handles {@code DykeException}
      * @param message represents the error caught
      */
     public DykeException(String message) {

@@ -61,7 +61,7 @@ public class Dyke {
     }
 
     /**
-     * Main method for running Dyke in CLI
+     * Runs Dyke in CLI
      * @param args User inputs
      */
     public static void main(String[] args) {
