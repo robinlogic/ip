@@ -4,7 +4,6 @@ import dyke.data.Library;
 import dyke.parse.CommandType;
 import dyke.parse.DykeException;
 import dyke.parse.Storage;
-import dyke.ui.Dyke;
 import dyke.ui.Ui;
 
 /**

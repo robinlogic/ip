@@ -20,6 +20,7 @@ public class Main extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
+            scene.getStylesheets().add(getClass().getResource("/view/styles.css").toExternalForm());
             stage.setScene(scene);
             MainWindow controller = fxmlLoader.<MainWindow>getController();
             controller.setDyke(dyke); // inject the Dyke instance
