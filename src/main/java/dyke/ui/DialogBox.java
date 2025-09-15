@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Circle;
 
 /**
  * Houses methods for creating the dialog boxes in GUI.
@@ -33,9 +34,18 @@ public class DialogBox extends HBox {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        /* Clip the ImageView into a circle (Enlisted the help of ChatGPT
+        * to crop the display pictures into a circle) */
+        double radius = Math.min(displayPicture.getFitWidth(), displayPicture.getFitHeight()) / 2;
 
-        dialog.setText(text);
+        Circle clip = new Circle(
+                displayPicture.getFitWidth() / 2,
+                displayPicture.getFitHeight() / 2,
+                radius
+        );
+        displayPicture.setClip(clip);
         displayPicture.setImage(img);
+        dialog.setText(text);
     }
 
     /**
@@ -50,12 +60,23 @@ public class DialogBox extends HBox {
         this.getChildren().setAll(tmp);
     }
 
+    private void setUserStyle() {
+        this.dialog.getStyleClass().add("user-bubble");
+    }
+
+    private void setDykeStyle() {
+        this.dialog.getStyleClass().add("message-bubble");
+    }
+
     public static DialogBox getUserDialog(String s, Image i) {
-        return new DialogBox(s, i);
+        DialogBox d = new DialogBox(s, i);
+        d.setUserStyle();
+        return d;
     }
 
     public static DialogBox getDykeDialog(String s, Image i) {
         var db = new DialogBox(s, i);
+        db.setDykeStyle();
         db.flip();
         return db;
     }

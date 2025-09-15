@@ -38,7 +38,7 @@ public class Stats {
             }
         }
         assert totalTasks >= 0;
-        String format = "Events Stats: \n"
+        String format = "Event Stats: \n"
                 + "Number of Tasks: " + totalTasks + "\n"
                 + "Average duration of Events: "
                 + (totalTasks > 0 ? totalDuration / totalTasks : 0) + "\n";
@@ -53,7 +53,7 @@ public class Stats {
             }
         }
         assert totalTasks >= 0;
-        String format = "Events Stats: \n"
+        String format = "Deadline Stats: \n"
                 + "Number of Tasks: " + totalTasks + "\n";
         return format;
     }
@@ -66,7 +66,7 @@ public class Stats {
             }
         }
         assert totalTasks >= 0;
-        String format = "Events Stats: \n"
+        String format = "Todo Stats: \n"
                 + "Number of Tasks: " + totalTasks + "\n";
         return format;
     }
