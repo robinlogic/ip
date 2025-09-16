@@ -24,10 +24,11 @@ public class HelpCommand extends Command {
                 + " 4. WHAT? #surprise...\n"
                 + "\n Library Commands:\n"
                 + " 1. TODO *insert activity*\n"
-                + " 2. DEADLINE *day-time*\n"
+                + " 2. DEADLINE /by *day-time*\n"
                 + " 3. EVENT *activity* /from *day-time* /to *day-time*\n"
                 + " 4. MARK *task number*\n"
-                + " 5. DELETE *task number*";
+                + " 5. DELETE *task number*\n"
+                + " 6. STATS #to see basic statistics for your Tasks";
         ui.printMessage(helpDesk);
         return helpDesk;
     }

@@ -24,7 +24,7 @@ public class Stats {
         String resEvent = this.getEventStats();
         String resDeadline = this.getDeadlineStats();
         String resTodo = this.getTodoStats();
-        return resEvent + "\n" + resDeadline + "\n" + resTodo + "\n" + resDeadline;
+        return resEvent + "\n" + resDeadline + "\n" + resTodo;
     }
 
     private String getEventStats() {
@@ -41,7 +41,7 @@ public class Stats {
         String format = "Event Stats: \n"
                 + "Number of Tasks: " + totalTasks + "\n"
                 + "Average duration of Events: "
-                + (totalTasks > 0 ? totalDuration / totalTasks : 0) + "\n";
+                + (totalTasks > 0 ? totalDuration / totalTasks : 0) + " days\n";
         return format;
     }
 

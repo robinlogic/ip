@@ -66,7 +66,7 @@ public class Storage {
                     try {
                         library.silentAdd(this.decode(line));
                     } catch (DykeException e) {
-                        return e.getMessage();
+                        return "Error loading tasks: " + e.getMessage();
                     }
                 }
                 return "Loaded tasks: " + library.getTasks().size();

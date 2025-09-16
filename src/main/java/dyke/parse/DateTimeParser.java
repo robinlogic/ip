@@ -18,13 +18,17 @@ public class DateTimeParser {
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static final DateTimeFormatter DATE_HH_MM_SS =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private static final LocalDateTime today = LocalDateTime.now();
 
     private final LocalDateTime date;
     private final DateTimeFormatter format;
 
 
-    private DateTimeParser(LocalDateTime date, DateTimeFormatter fmt) {
+    private DateTimeParser(LocalDateTime date, DateTimeFormatter fmt) throws DykeException {
         assert date != null && fmt != null;
+        if (date.isBefore(today)) {
+            throw new DykeException("Dude, are we travelling to the past?");
+        }
         this.date = date;
         this.format = fmt;
     }
@@ -83,6 +87,10 @@ public class DateTimeParser {
 
     public long timeDifference(DateTimeParser end) {
         return ChronoUnit.DAYS.between(this.date, end.date);
+    }
+
+    public boolean isConsistentFormat(DateTimeParser end) {
+        return this.format == end.format;
     }
 
     /**
