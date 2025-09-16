@@ -6,6 +6,9 @@ import dyke.parse.CommandType;
 import dyke.parse.Storage;
 import dyke.ui.Ui;
 
+/**
+ * Houses methods for providing basic statistics for {@code Task}s.
+ */
 public class StatsCommand extends Command {
     public StatsCommand() {
         super(CommandType.STATS);

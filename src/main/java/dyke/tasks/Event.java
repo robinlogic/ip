@@ -21,6 +21,12 @@ public class Event extends Task {
         super(desc);
         this.from = DateTimeParser.parse(from);
         this.to = DateTimeParser.parse(to);
+        if (this.from.timeDifference(this.to) < 0) {
+            throw new DykeException("Dude, are we travelling to the past??");
+        }
+        if (!this.to.isConsistentFormat(this.from)) {
+            throw new DykeException("Hey, keep the datetime consistent... please?");
+        }
     }
 
     public DateTimeParser getFrom() {
