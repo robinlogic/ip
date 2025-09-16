@@ -22,6 +22,7 @@ public class Main extends Application {
             Scene scene = new Scene(ap);
             scene.getStylesheets().add(getClass().getResource("/view/styles.css").toExternalForm());
             stage.setScene(scene);
+            stage.setTitle("DYKE Task Manager");
             MainWindow controller = fxmlLoader.<MainWindow>getController();
             controller.setDyke(dyke); // inject the Dyke instance
             stage.show();

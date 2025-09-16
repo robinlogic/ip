@@ -66,12 +66,12 @@ public class Storage {
                     try {
                         library.silentAdd(this.decode(line));
                     } catch (DykeException e) {
-                        return "Error loading tasks: " + e.getMessage();
+                        return "Error loading tasks: \n" + e.getMessage();
                     }
                 }
                 return "Loaded tasks: " + library.getTasks().size();
             } catch (IOException e) {
-                return "Error loading tasks: " + e.getMessage();
+                return "Error loading tasks: \n" + e.getMessage();
             }
         }
     }
@@ -97,15 +97,13 @@ public class Storage {
             break;
         case "E":
             if (parts.length == 5) {
-                return isDone ? new Event(parts[2], parts[3], parts[4])
-                        : new Event(parts[2], parts[3], parts[4]).isDone();
+                return isDone ? new Event(parts[2], parts[3], parts[4]).isDone()
+                        : new Event(parts[2], parts[3], parts[4]);
             }
             break;
         default:
             throw new DykeException("Unknown task type in file: " + type);
         }
-        return new Task("dummy");
+        throw new DykeException("Unable to parse task in file: " + line);
     }
-
-
 }

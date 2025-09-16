@@ -17,7 +17,7 @@ public class LibraryTest {
         String s = library.addTask(tasks[0]);
         assertEquals(1, library.size());
 
-        String res = " Great! I'm keeping track :D: \n"
+        String res = " Great! I'm keeping track :D:\n"
                 + "\t" + tasks[0].toString() + "\n There is 1 task in the Library.";
         assertEquals(res , s);
 

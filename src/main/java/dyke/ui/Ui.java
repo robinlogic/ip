@@ -37,8 +37,8 @@ public class Ui {
      * @return Welcome message
      */
     public String welcomeMessage() {
-        String welcome = "\n Hello! I'm DYKE\n"
-                + " What can I do for you?\n\n"
+        String welcome = "Hello! I'm DYKE\n"
+                + "What can I do for you?\n\n"
                 + "\t\t\t\t\t\t\tpsst! type 'help' for help, duh.";
         this.printMessage(welcome);
         return welcome;

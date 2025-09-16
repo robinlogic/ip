@@ -48,7 +48,7 @@ public class ParserTest {
                 + "\n\t format: /from *day-time* /to *day-time*", ui.getLastMessage());
 
         // Invalid command, datetime in wrong format
-        parser.parseCommand(new String[]{"event", "this test /from 2025-04-05 /to 2024/-04/05"});;
+        parser.parseCommand(new String[]{"event", "this test /from 2024/-04/05 /to 2024/-04/05"});;
 
         assertEquals("Invalid datetime: 2024/-04/05", ui.getLastMessage());
     }
