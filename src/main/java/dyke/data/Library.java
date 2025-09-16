@@ -52,9 +52,8 @@ public class Library {
     public ArrayList<Task> getTasks() {
         return this.library;
     }
-
     private Task getTask(int index) {
-        assert index >= 0 && index < library.size();
+        assert index >= 0 && index <= library.size();
         return this.library.get(index);
     }
 

@@ -13,17 +13,17 @@ public class DeadlineTest {
     @BeforeEach
     public void setUp() throws DykeException {
         task = new Deadline(
-                "running this test", "2025-08-25");
+                "running this test", "2100-08-25");
     }
     @Test
     public void deadlineString() {
         assertEquals(
-                "[D] [ ] running this test (by: 2025-08-25)", task.toString());
+                "[D] [ ] running this test (by: 2100-08-25)", task.toString());
     }
 
     @Test
     public void deadlineEncode() {
-        assertEquals("D | 0 | running this test | 2025-08-25", task.encode());
+        assertEquals("D | 0 | running this test | 2100-08-25", task.encode());
     }
 }
 
