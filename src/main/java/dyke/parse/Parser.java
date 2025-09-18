@@ -77,7 +77,7 @@ public class Parser {
             case WHAT:
                 return new WhatCommand().execute(library, ui, storage);
             case FIND:
-                return new FindCommand(inputs[1]).execute(library, ui, storage);
+                return new FindCommand(inputs).execute(library, ui, storage);
             case STATS:
                 return new StatsCommand().execute(library, ui, storage);
             default:
