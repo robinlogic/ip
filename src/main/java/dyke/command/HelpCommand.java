@@ -28,7 +28,8 @@ public class HelpCommand extends Command {
                 + " 3. EVENT *activity* /from *day-time* /to *day-time*\n"
                 + " 4. MARK *task number*\n"
                 + " 5. DELETE *task number*\n"
-                + " 6. STATS #to see basic statistics for your Tasks";
+                + " 6. STATS #to see basic statistics for your Tasks"
+                + " 7. FIND *keyword* #finds tasks with keyword\n";
         ui.printMessage(helpDesk);
         return helpDesk;
     }
