@@ -11,13 +11,13 @@ import dyke.ui.Ui;
  * Houses methods for {@code FindCommand}
  */
 public class FindCommand extends Command {
-    private final String keyword;
+    private final String[] keyword;
 
     /**
      * Creates {@code FindCommand}
      * @param keyword Keywords for searching in the {@code Library}
      */
-    public FindCommand(String keyword) {
+    public FindCommand(String[] keyword) {
         super(CommandType.FIND);
         this.keyword = keyword;
     }
@@ -34,18 +34,18 @@ public class FindCommand extends Command {
         }
     }
 
-    private String handleFind(String keyword, Library library) throws DykeException {
-        if (keyword.equals(" ") || keyword.isEmpty()) {
+    private String handleFind(String[] keyword, Library library) throws DykeException {
+        if (keyword.length < 2 || keyword[1].equals(" ")) {
             throw new DykeException("i'm sorry, i did not get that :(");
         }
         Library findLibrary = new Library();
         for (Task t : library.getTasks()) {
-            if (t.encode().contains(keyword)) {
+            if (t.encode().contains(keyword[1])) {
                 findLibrary.addTask(t);
             }
         }
         int size = findLibrary.size();
         return size > 0 ? findLibrary.printList()
-                : "There are no tasks with the keyword: " + keyword;
+                : "There are no tasks with the keyword: " + keyword[1];
     }
 }
