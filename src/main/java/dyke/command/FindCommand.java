@@ -35,7 +35,7 @@ public class FindCommand extends Command {
     }
 
     private String handleFind(String[] keyword, Library library) throws DykeException {
-        if (keyword.length < 2 || keyword[1].equals(" ")) {
+        if (keyword.length < 2 || keyword[1].equals(" ") || keyword[1].isEmpty()) {
             throw new DykeException("i'm sorry, i did not get that :(");
         }
         Library findLibrary = new Library();
