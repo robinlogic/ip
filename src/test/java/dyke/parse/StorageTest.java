@@ -23,7 +23,7 @@ public class StorageTest {
         assertEquals("Loaded tasks: 1", normal);
         assertEquals(
                 "Here it is!\n"
-                        + "1. [E] [ ] Research Duration (from: 2025-09-30 to: 2025-10-25)",
+                        + "1. [E] [ ] Research Duration (from: 2125-09-30 to: 2125-10-25)",
                 library.printList());
     }
 }
